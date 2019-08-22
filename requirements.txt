@@ -1,1 +1,5 @@
 graphene_django
+django_storages
+boto3
+dj-database-url
+django-ckeditor
