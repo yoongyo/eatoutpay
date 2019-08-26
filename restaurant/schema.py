@@ -1,7 +1,11 @@
 import graphene
 from graphene_django.types import DjangoObjectType
+from .models import RestaurantCategory, Restaurant, MenuCategory, Menu, Area
 
-from .models import RestaurantCategory, Restaurant, MenuCategory, Menu
+
+class AreaType(DjangoObjectType):
+    class Meta:
+        model = Area
 
 
 class RestaurantCategoryType(DjangoObjectType):
@@ -29,6 +33,10 @@ class Query(graphene.AbstractType):
     all_restaurant = graphene.List(RestaurantType)
     all_menuCategory = graphene.List(MenuCategoryType)
     all_menu = graphene.List(MenuType)
+    all_area = graphene.List(AreaType)
+
+    def resolve_all_area(self, context, **kwargs):
+        return Area.objects.all()
 
     def resolve_all_restaurantCategory(self, context, **kwargs):
         return RestaurantCategory.objects.all()

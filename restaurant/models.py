@@ -3,6 +3,10 @@ from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 
+class Area(models.Model):
+    name = models.CharField(max_length=50)
+
+
 class RestaurantCategory(models.Model):
     name = models.CharField(max_length=50)
 
@@ -13,6 +17,7 @@ class RestaurantCategory(models.Model):
 class Restaurant(models.Model):
     admin = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     category = models.ForeignKey(RestaurantCategory, on_delete=models.CASCADE)
+    area = models.ForeignKey(Area, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=50)
     method = models.CharField(max_length=50, blank=True, null=True)
     address = models.CharField(max_length=100)
