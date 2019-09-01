@@ -8,6 +8,7 @@ class Area(models.Model):
 
 
 class RestaurantCategory(models.Model):
+    sequence = models.PositiveIntegerField()
     name = models.CharField(max_length=50)
 
     def __str__(self):
