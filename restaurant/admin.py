@@ -21,7 +21,7 @@ class MenuAdmin(admin.ModelAdmin):
 
 
 class RestaurantAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name', 'id']
 
 
 class CommentAdmin(admin.ModelAdmin):

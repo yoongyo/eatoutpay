@@ -5,3 +5,4 @@ dj-database-url
 django-ckeditor
 pillow
 django-graphql-jwt
+django-filter
