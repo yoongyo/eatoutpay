@@ -1,5 +1,5 @@
 import graphene
-from graphene import relay, ObjectType
+from graphene import ObjectType
 from graphene_django.types import DjangoObjectType
 from .models import RestaurantCategory, Restaurant, MenuCategory, Menu, Area
 
@@ -17,8 +17,6 @@ class RestaurantCategoryType(DjangoObjectType):
 class RestaurantType(DjangoObjectType):
     class Meta:
         model = Restaurant
-        filter_fields = ['name']
-        interfaces = (relay.Node, )
 
 
 class MenuCategoryType(DjangoObjectType):
@@ -31,7 +29,7 @@ class MenuType(DjangoObjectType):
         model = Menu
 
 
-class Query(ObjectType):
+class Query(graphene.AbstractType):
     all_restaurantCategory = graphene.List(RestaurantCategoryType)
     restaurant = graphene.Field(RestaurantType,
                               id=graphene.Int(),
@@ -65,5 +63,4 @@ class Query(ObjectType):
 
         if name is not None:
             return Restaurant.objects.get(name=name)
-
         return None
