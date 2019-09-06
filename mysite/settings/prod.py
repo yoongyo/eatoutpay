@@ -10,7 +10,7 @@ DATABASES = {
         'NAME': 'ordermandb',
         'USER': 'root',
         'PASSWORD': 'aa728500',
-        'HOST': 'localhost',
+        'HOST': 'eatoutpay.pythonanywhere.com',
         'PORT': '',
     }
 }
