@@ -11,7 +11,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': 'aa728500',
         'HOST': 'eatoutpay.pythonanywhere.com',
-        'PORT': '',
+        'PORT': '5432',
     }
 }
 
