@@ -4,16 +4,14 @@ import dj_database_url
 DEBUG = False
 ALLOWED_HOSTS = ['eatoutpay.pythonanywhere.com']
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ordermandb',
-        'USER': 'root',
-        'PASSWORD': 'aa728500',
-        'HOST': 'eatoutpay.pythonanywhere.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'ordermandb.sqlite3'),
     }
 }
+
 
 AWS_ACCESS_KEY_ID = 'AKIAVNC3EVGMGNL5BLSR'
 AWS_SECRET_ACCESS_KEY = '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'
