@@ -4,11 +4,16 @@ import dj_database_url
 DEBUG = False
 ALLOWED_HOSTS = ['eatoutpay.pythonanywhere.com']
 
-# DATABASE
-db_from_env = dj_database_url.config(env='DATABASE_URL', conn_max_age=500)
-
-# 기존 DATABASES
-DATABASES['default'].update(db_from_env)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ordermandb',
+        'USER': 'root',
+        'PASSWORD': 'aa728500',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 AWS_ACCESS_KEY_ID = 'AKIAVNC3EVGMGNL5BLSR'
 AWS_SECRET_ACCESS_KEY = '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'
