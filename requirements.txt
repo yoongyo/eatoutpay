@@ -6,4 +6,5 @@ django-ckeditor
 pillow
 django-graphql-jwt
 django-filter
-pymongo
+psycopg2
+psycopg2-binary
