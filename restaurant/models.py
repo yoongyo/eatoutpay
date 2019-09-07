@@ -69,6 +69,14 @@ class Menu(models.Model):
         return self.name
 
 
+class Review(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+    content = models.TextField()
+    image = models.ImageField(upload_to='review_image/', blank=True, null=True)
+    created_at = models.DateField(auto_now_add=True)
+
+
 
 
 

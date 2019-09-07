@@ -1,7 +1,7 @@
 import graphene
 from graphene import ObjectType
 from graphene_django.types import DjangoObjectType
-from .models import RestaurantCategory, Restaurant, MenuCategory, Menu, Area
+from .models import RestaurantCategory, Restaurant, MenuCategory, Menu, Area, Review
 
 
 class AreaType(DjangoObjectType):
@@ -29,6 +29,11 @@ class MenuType(DjangoObjectType):
         model = Menu
 
 
+class ReviewType(DjangoObjectType):
+    class Meta:
+        model = Review
+
+
 class Query(graphene.AbstractType):
     all_restaurantCategory = graphene.List(RestaurantCategoryType)
     restaurant = graphene.Field(RestaurantType,
@@ -42,6 +47,8 @@ class Query(graphene.AbstractType):
     all_menu = graphene.List(MenuType,
                              restaurant=graphene.Int())
     all_area = graphene.List(AreaType)
+    all_review = graphene.List(ReviewType,
+                               restaurant=graphene.Int())
 
     def resolve_all_area(self, context, **kwargs):
         return Area.objects.all()
@@ -61,6 +68,12 @@ class Query(graphene.AbstractType):
             return Menu.objects.filter(restaurant__id=id)
 
         return Menu.objects.all()
+
+    def resolve_all_review(self, context, **kwargs):
+        id = kwargs.get('restaurant')
+        if id is not None:
+            return Review.objects.filter(restaurant__id=id)
+        return Review.objects.all()
 
     def resolve_restaurant(self, info, **kwargs):
         id = kwargs.get('id')
