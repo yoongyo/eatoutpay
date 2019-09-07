@@ -47,7 +47,8 @@ class Query(graphene.AbstractType):
     all_menuCategory = graphene.List(MenuCategoryType,
                                      id=graphene.Int())
     all_menu = graphene.List(MenuType,
-                             restaurant=graphene.Int())
+                             restaurant=graphene.Int(),
+                             category=graphene.Int())
     all_area = graphene.List(AreaType)
     all_review = graphene.List(ReviewType,
                                restaurant=graphene.Int())
