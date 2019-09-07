@@ -36,7 +36,7 @@ class AreaAdmin(admin.ModelAdmin):
 
 
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ['name', 'restaurant']
+    list_display = ['restaurant']
 
 
 admin.site.register(Menu, MenuAdmin)
