@@ -39,7 +39,8 @@ class Query(graphene.AbstractType):
                           )
     all_restaurant = graphene.List(RestaurantType)
     all_menuCategory = graphene.List(MenuCategoryType)
-    all_menu = graphene.List(MenuType)
+    all_menu = graphene.List(MenuType,
+                             restaurant=graphene.Int())
     all_area = graphene.List(AreaType)
 
     def resolve_all_area(self, context, **kwargs):
@@ -55,6 +56,10 @@ class Query(graphene.AbstractType):
         return MenuCategory.objects.all()
 
     def resolve_all_menu(self, context, **kwargs):
+        id = kwargs.get('restaurant')
+        if id is not None:
+            return Menu.objects.filter(restaurant__id=id)
+
         return Menu.objects.all()
 
     def resolve_restaurant(self, info, **kwargs):
