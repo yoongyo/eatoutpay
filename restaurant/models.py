@@ -6,6 +6,9 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 class Area(models.Model):
     name = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.name
+
 
 class RestaurantCategory(models.Model):
     sequence = models.PositiveIntegerField()

@@ -34,6 +34,9 @@ class Query(graphene.AbstractType):
     restaurant = graphene.Field(RestaurantType,
                               id=graphene.Int(),
                               name=graphene.String())
+    menu = graphene.Field(MenuType,
+                          id=graphene.Int()
+                          )
     all_restaurant = graphene.List(RestaurantType)
     all_menuCategory = graphene.List(MenuCategoryType)
     all_menu = graphene.List(MenuType)
