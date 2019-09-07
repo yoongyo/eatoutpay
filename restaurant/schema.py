@@ -41,7 +41,7 @@ class Query(graphene.AbstractType):
                               name=graphene.String())
     menu = graphene.Field(MenuType,
                           restaurant=graphene.Int(),
-                          menuCategory=graphene.Int(),
+                          category=graphene.Int(),
                           )
     all_restaurant = graphene.List(RestaurantType)
     all_menuCategory = graphene.List(MenuCategoryType,
@@ -71,12 +71,12 @@ class Query(graphene.AbstractType):
 
     def resolve_all_menu(self, context, **kwargs):
         id = kwargs.get('restaurant')
-        category = kwargs.get('menuCategory')
+        category = kwargs.get('category')
         if id is not None:
             return Menu.objects.filter(restaurant__id=id)
         if category is not None:
             return Menu.objects.filter(category__id=category)
-        
+
         return Menu.objects.all()
 
     def resolve_all_review(self, context, **kwargs):
