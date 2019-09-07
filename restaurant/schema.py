@@ -99,8 +99,11 @@ class Query(graphene.AbstractType):
 
     def resolve_menu(self, info, **kwargs):
         id = kwargs.get('restaurant')
+        category = kwargs.get('category')
 
         if id is not None:
             return Menu.objects.get(restaurant__id=id)
+        if category is not None:
+            return Menu.objects.get(category__id=category)
 
         return None
