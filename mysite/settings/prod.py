@@ -1,5 +1,4 @@
 from .common import *
-import dj_database_url
 
 DEBUG = False
 ALLOWED_HOSTS = ['eatoutpay.pythonanywhere.com']
