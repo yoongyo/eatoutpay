@@ -76,6 +76,9 @@ class Review(models.Model):
     image = models.ImageField(upload_to='review_image/', blank=True, null=True)
     created_at = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return self.restaurant
+
 
 
 
