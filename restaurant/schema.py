@@ -104,7 +104,7 @@ class Query(graphene.AbstractType):
         category = kwargs.get('category')
 
         if id is not None:
-            return Menu.objects.get(id=id)
+            return Menu.objects.get(pk=id)
         if restaurant is not None:
             return Menu.objects.get(restaurant__id=restaurant)
         if category is not None:
