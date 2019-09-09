@@ -55,6 +55,9 @@ class Query(graphene.AbstractType):
     all_review = graphene.List(ReviewType,
                                restaurant=graphene.Int())
 
+    review_count = graphene.List(ReviewType,
+                                 restaurant=graphene.In())
+
     def resolve_all_area(self, context, **kwargs):
         return Area.objects.all()
 
@@ -68,8 +71,6 @@ class Query(graphene.AbstractType):
         id = kwargs.get('restaurant')
         if id is not None:
             return MenuCategory.objects.filter(restaurant__id=id)
-
-
         return MenuCategory.objects.all()
 
     def resolve_all_menu(self, context, **kwargs):
@@ -112,3 +113,11 @@ class Query(graphene.AbstractType):
             return Menu.objects.get(category__id=category)
 
         return None
+
+    def resolve_review_count(self, info, **kwargs):
+        restaurant = kwargs.get('restaurant')
+
+        if restaurant is not None:
+            review_count = len(Review.objects.filter(restaurant__id=restaurant))
+            return review_count
+
