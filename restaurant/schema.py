@@ -40,6 +40,7 @@ class Query(graphene.AbstractType):
                               id=graphene.Int(),
                               name=graphene.String())
     menu = graphene.Field(MenuType,
+                          id=graphene.Int(),
                           restaurant=graphene.Int(),
                           category=graphene.Int(),
                           )
