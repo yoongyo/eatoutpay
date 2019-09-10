@@ -13,6 +13,7 @@ class Area(models.Model):
 class RestaurantCategory(models.Model):
     sequence = models.PositiveIntegerField()
     name = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='restaurant_category', null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -30,12 +31,14 @@ class Restaurant(models.Model):
     tel = models.CharField(max_length=50, blank=True, null=True)
     introduction = models.TextField()
     closedDay = models.CharField(max_length=50)
+    representative_menu = models.CharField(max_length=30)
     representative_image = models.ImageField(upload_to='representative_image/', blank=True, null=True)
     businessHours = models.CharField(max_length=50)
     businessLicenseRepresentative = models.CharField(max_length=50)
     businessLicenseMutualName = models.CharField(max_length=50)
     businessLicenseNumber = models.CharField(max_length=50)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='likes', blank=True)
+    follow = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='follow', blank=True)
 
     def __str__(self):
         return self.name

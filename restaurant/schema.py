@@ -37,8 +37,8 @@ class ReviewType(DjangoObjectType):
 class Query(graphene.AbstractType):
     all_restaurantCategory = graphene.List(RestaurantCategoryType)
     restaurant = graphene.Field(RestaurantType,
-                              id=graphene.Int(),
-                              name=graphene.String())
+                                id=graphene.Int(),
+                                name=graphene.String())
     menu = graphene.Field(MenuType,
                           id=graphene.Int(),
                           restaurant=graphene.Int(),
@@ -54,9 +54,6 @@ class Query(graphene.AbstractType):
     all_area = graphene.List(AreaType)
     all_review = graphene.List(ReviewType,
                                restaurant=graphene.Int())
-
-    review_count = graphene.List(ReviewType,
-                                 restaurant=graphene.Int())
 
     def resolve_all_area(self, context, **kwargs):
         return Area.objects.all()
@@ -114,11 +111,15 @@ class Query(graphene.AbstractType):
 
         return None
 
-    def resolve_review_count(self, info, **kwargs):
-        restaurant = kwargs.get('restaurant')
 
-        if restaurant is not None:
-            review_count = len(Review.objects.filter(restaurant__id=restaurant))
-            print(review_count)
-            return review_count
-
+# class Upload(graphene.Scalar):
+#     def serialize(self):
+#         pass
+#
+# class ReviewMutation(graphene.Mutation):
+#     class Arguments:
+#         id = graphene.ID()
+#         user = graphene.
+#         restaurant
+#         image = Upload()
+#         content = graphene.String(required=True)
