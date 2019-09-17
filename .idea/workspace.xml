@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e657847c-1c27-4fbe-97f1-f3ec1a528d20" name="Default Changelist" comment="" />
+    <list default="true" id="e657847c-1c27-4fbe-97f1-f3ec1a528d20" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/restaurant/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/schema.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +110,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="4136" />
-          <entry key="py" value="9708" />
+          <entry key="py" value="9737" />
           <entry key="txt" value="44" />
         </counts>
       </usages-collector>
@@ -116,7 +118,7 @@
         <counts>
           <entry key="HTML" value="4136" />
           <entry key="PLAIN_TEXT" value="44" />
-          <entry key="Python" value="9708" />
+          <entry key="Python" value="9737" />
         </counts>
       </usages-collector>
     </session>
@@ -202,11 +204,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/restaurant/schema.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="82" column="43" selection-start-line="82" selection-start-column="39" selection-end-line="82" selection-end-column="43" />
+            <state relative-caret-position="527">
+              <caret line="83" column="34" lean-forward="true" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -226,11 +228,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/manage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="180">
+              <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -319,9 +321,9 @@
         <option value="$PROJECT_DIR$/restaurant/templates/restaurant/restaurant_detail.html" />
         <option value="$PROJECT_DIR$/mysite/settings/common.py" />
         <option value="$PROJECT_DIR$/restaurant/forms.py" />
-        <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/restaurant/models.py" />
         <option value="$PROJECT_DIR$/restaurant/schema.py" />
+        <option value="$PROJECT_DIR$/manage.py" />
       </list>
     </option>
   </component>
@@ -729,13 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/accounts/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -749,11 +744,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/restaurant/schema.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="82" column="43" selection-start-line="82" selection-start-column="39" selection-end-line="82" selection-end-column="43" />
+        <state relative-caret-position="527">
+          <caret line="83" column="34" lean-forward="true" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
         </state>
       </provider>
     </entry>
