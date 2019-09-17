@@ -76,13 +76,13 @@ class Query(graphene.AbstractType):
         return MenuCategory.objects.all()
 
     def resolve_all_menu(self, context, **kwargs):
-        id = kwargs.get('restaurant')
+        restaurant = kwargs.get('restaurant')
         category = kwargs.get('category')
         name = kwargs.get('name')
         if name is not None:
             return Menu.ojbects.filter(name=name)
-        if id is not None:
-            return Menu.objects.filter(restaurant__id=id)
+        if restaurant is not None:
+            return Menu.objects.filter(restaurant__id=restaurant)
         if category is not None:
             return Menu.objects.filter(category__id=category)
 
