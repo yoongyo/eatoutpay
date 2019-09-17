@@ -6,9 +6,9 @@ from .widgets import LocationWidget
 class RestaurantForm(forms.ModelForm):
     class Meta:
         model = Restaurant
-        fields = ['name', 'category', 'address', 'account', 'tel', 'introduction', 'closedDay',
+        fields = ['name', 'category', 'address', 'account', 'tel', 'introduction', 'closedDay', 'longitude', 'latitude',
                   'businessLicenseRepresentative', 'businessLicenseMutualName', 'businessLicenseNumber', 'businessHours',
-                  'area', 'representative_image', 'representative_menu']
+                  'area', 'representative_image', 'representative_menu', 'map_content', 'map_image']
         widgets = {
             'name': forms.TextInput(
                 attrs={
