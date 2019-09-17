@@ -1,5 +1,4 @@
 import graphene
-from graphene import ObjectType
 from graphene_django.types import DjangoObjectType
 from .models import RestaurantCategory, Restaurant, MenuCategory, Menu, Area, Review
 
@@ -44,10 +43,13 @@ class Query(graphene.AbstractType):
                           restaurant=graphene.Int(),
                           category=graphene.Int(),
                           )
-    all_restaurant = graphene.List(RestaurantType)
+    all_restaurant = graphene.List(RestaurantType,
+                                   name=graphene.String(),
+                                   )
     all_menuCategory = graphene.List(MenuCategoryType,
                                      restaurant=graphene.Int())
     all_menu = graphene.List(MenuType,
+                             name=graphene.String(),
                              id=graphene.Int(),
                              restaurant=graphene.Int(),
                              category=graphene.Int())
@@ -62,6 +64,9 @@ class Query(graphene.AbstractType):
         return RestaurantCategory.objects.all()
 
     def resolve_all_restaurant(self, context, **kwargs):
+        name = kwargs.get('name')
+        if name is not None:
+            return Restaurant.objects.filter(name=name)
         return Restaurant.objects.all()
 
     def resolve_all_menuCategory(self, context, **kwargs):
@@ -73,6 +78,9 @@ class Query(graphene.AbstractType):
     def resolve_all_menu(self, context, **kwargs):
         id = kwargs.get('restaurant')
         category = kwargs.get('category')
+        name = kwargs.get('name')
+        if name is not None:
+            return Menu.ojbects.filter(name=name)
         if id is not None:
             return Menu.objects.filter(restaurant__id=id)
         if category is not None:
