@@ -34,6 +34,8 @@ class Restaurant(models.Model):
     closedDay = models.CharField(max_length=50)
     representative_menu = models.CharField(max_length=30)
     representative_image = models.ImageField(upload_to='representative_image/', blank=True, null=True)
+    map_image = models.ImageField(upload_to='map_image/', blank=True, null=True)
+    map_content = models.CharField(max_length=50)
     businessHours = models.CharField(max_length=50)
     businessLicenseRepresentative = models.CharField(max_length=50)
     businessLicenseMutualName = models.CharField(max_length=50)
