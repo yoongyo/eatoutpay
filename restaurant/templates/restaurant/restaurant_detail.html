@@ -1,0 +1,456 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<!-- PC버전 -->
+<div class="container d-none d-sm-block">
+    <div class="row mt-4">
+        <div class="col-lg-3 col-sm-1 col-md-2 col-xs-0"></div>
+        <div class="col-lg-6 col-sm-10 col-md-8 col-xs-12">
+            <div style="border:1px solid gray;border-radius:12px;box-shadow: 0px 0px 20px #000;background-color:white;height:760px">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <h3 class="text-center mt-4">{{ restaurant.name }}</h3>
+                    </div>
+                    <div class="col-2">
+                        <a href="{% url 'restaurant:restaurant_edit' restaurant.pk %}">
+                            <img width="40%" src="{% static 'image/edit.png' %}">
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center py-2">
+                    {% if reviews_average == 0 %}
+                        <img src="{% static 'image/whitestar.svg' %}">
+                        <img src="{% static 'image/whitestar.svg' %}">
+                        <img src="{% static 'image/whitestar.svg' %}">
+                        <img src="{% static 'image/whitestar.svg' %}">
+                        <img src="{% static 'image/whitestar.svg' %}">
+                    {% endif %}
+                    {% if 1 < reviews_average and reviews_average < 2 %}
+                        <img src="{% static 'image/star.png' %}">
+                        <img src="{% static 'image/whitestar.svg' %}">
+                        <img src="{% static 'image/whitestar.svg' %}">
+                        <img src="{% static 'image/whitestar.svg' %}">
+                        <img src="{% static 'image/whitestar.svg' %}">
+                    {% endif %}
+                    {% if 2 < reviews_average and reviews_average < 3 %}
+                    ★★☆☆☆
+                    {% endif %}
+                    {% if 3 < reviews_average and reviews_average < 4 %}★★★☆☆{% endif %}
+                    {% if 4 < reviews_average and reviews_average < 5 %}
+                        <img class="m-0" width="30px" src="{% static 'image/star.png' %}">
+                        <img width="30px" src="{% static 'image/star.png' %}">
+                        <img width="30px" src="{% static 'image/star.png' %}">
+                        <img width="30px" src="{% static 'image/star.png' %}">
+                        <img width="30px" src="{% static 'image/whitestar.svg' %}">
+                    {% endif %}
+                    {% if reviews_average == 5 %}
+                        <img width="30px" src="{% static 'image/star.png' %}">
+                        <img width="30px" src="{% static 'image/star.png' %}">
+                        <img width="30px" src="{% static 'image/star.png' %}">
+                        <img width="30px" src="{% static 'image/star.png' %}">
+                        <img width="30px" src="{% static 'image/star.png' %}">
+                    {% endif %}
+                    <span class="m-0">{{ reviews_average }}</span>
+                </div>
+                <h6 class="text-center my-2" style="color:rgb(90, 90, 90)">최근리뷰 <span id="reviewCount"></span> | 최근사장님댓글 {{ admin_comments_count }}</h6>
+                <hr>
+                <div class="container my-3">
+                    <div class="row px-3">
+                        <div class="col-4 py-2" style="border:1px solid rgb(210,210,210)">
+                            <div class="text-center">
+                                <p class="mt-1 mb-0">길찾기</p>
+                            </div>
+                        </div>
+                        <div class="col-4 py-2 px-0" style="border:1px solid rgb(210,210,210)">
+                            <div class="text-center">
+                                <p class="mt-1 mb-0">좋아요 {{ like_count }}</p>
+                            </div>
+                        </div>
+                        <div class="col-4 py-2" style="border:1px solid rgb(210,210,210)">
+                            <div class="text-center">
+                                <p class="mt-1 mb-0">팔로우</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 메뉴 정보 리뷰 공지사항 TAB -->
+                <ul class="nav nav-tabs">
+                    <li class="nav-item text-center px-0" style="width:25%;color:black">
+                        <a style="color:black" class="nav-link active px-0" data-toggle="tab" href="#menu">메뉴 {{ menu_count }}</a>
+                    </li>
+                    <li class="nav-item text-center px-0" style="width:25%;color:black">
+                        <a style="color:black" class="nav-link px-0" data-toggle="tab" href="#info">정보</a>
+                    </li>
+                    <li class="nav-item text-center px-0" style="width:25%;color:black">
+                        <a style="color:black" class="nav-link px-0" data-toggle="tab" href="#review">리뷰</a>
+                    </li>
+                    <li class="nav-item text-center px-0" style="width:25%;color:black">
+                        <a style="color:black" class="nav-link px-0" data-toggle="tab" href="#notice">공지사항</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="menu">
+                        <div id="accordion" class="tab-pane fade show active">
+                            {% for j in menu_category %}
+                              <div class="card">
+                                  <a class="card-link" data-toggle="collapse" href="#collapse{{ j.name }}" style="width:100%">
+                                      <div class="card-header" style="background-color:rgb(200, 200, 200)">
+                                          {{ j.name }}
+                                      </div>
+                                  </a>
+                                  {% for i in menus %}
+                                  {% if j.name == i.category.name %}
+                                  <div id="collapse{{ j.name }}" class="collapse show">
+                                      <div class="card-body p-0">
+                                          <div id="{{ j.name }}" class="collapse show" aria-labelledby="h{{ j.name }}">
+                                              <a href="#" style="color:black;text-decoration:none">
+                                                  <div class="py-2 px-3" style="border-bottom:1px solid rgb(220,220,220)">
+                                                      <h6><strong>{{ i.name }}</strong></h6>
+                                                      <span id="price{{i.pk}}"></span>
+                                                      <script>
+                                                        var pk = "{{ i.pk }}";
+                                                        var price = "{{ i.price }}";
+                                                        var temp_str = String(price);
+                                                        for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++) {
+                                                            retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;
+                                                        }
+                                                        document.getElementById("price"+pk).textContent = retValue + "원";
+                                                      </script>
+                                                </div>
+                                              </a>
+                                          </div>
+                                      </div>
+                                  </div>
+                                {% endif %}
+                                {% endfor %}
+                              </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="info">
+                        <div class="container pb-4">
+                            <h5 class="mt-3 mb-0">가게 소개</h5>
+                            <p class="p-0">{{ restaurant.introduction|safe }}</p>
+
+                            <h5 class="mt-5">영업정보</h5>
+                            <table>
+                                <tr>
+                                    <td style="width:5rem">운영시간</td>
+                                    <td class="pl-3">{{ restaurant.businessHours }}</td>
+                                </tr>
+                                <tr>
+                                    <td>휴무일</td>
+                                    <td class="pl-3">{{ restaurant.closedDay }}</td>
+                                </tr>
+                                <tr>
+                                    <td>전화번호</td>
+                                    <td class="pl-3"><a href="tel:{{ restaurant.tel }}">{{ restaurant.tel }}</a></td>
+                                </tr>
+                            </table>
+
+                            <h5 class="mt-5">사업자 정보</h5>
+                            <table>
+                                <tr>
+                                    <td style="width:5rem">대표자명</td>
+                                    <td class="pl-3">{{ restaurant.businessLicenseRepresentative }}</td>
+                                </tr>
+                                <tr>
+                                    <td>상호명</td>
+                                    <td class="pl-3">{{ restaurant.businessLicenseMutualName }}</td>
+                                </tr>
+                                <tr>
+                                    <td>사업자 주소</td>
+                                    <td class="pl-3">{{ restaurant.address }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>사업자<br>등록번호</td>
+                                    <td class="pl-3">{{ restaurant.businessLicenseNumber }}</td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="review">
+                        <div class="container">
+                            <div class="p-3">
+                                <a href="#" type="button" style="width:100%;"><div class="text-center p-3" style="border-radius:15px;border:1px solid rgb(210,210,210)">리뷰 쓰기</div></a>
+                            </div>
+                            <!-- user 리뷰 -->
+                            {% for i in comments %}
+                            <div class="row pb-4">
+                                <div class="col-2 p-0">
+                                    <a href="{% url 'accounts:profile_review' i.user.username %}"><img width="100%" src="{% static 'image/mapbox-icon.png' %}"></a>
+                                </div>
+                                <div class="col-10 pl-0">
+                                    <b><a href="{% url 'accounts:profile_review' i.user.username %}">{{ i.user }}</a></b><br>
+                                    <span style="color:gold">
+                                        {% if i.rating == 1 %}★☆☆☆☆{% endif %}
+                                        {% if i.rating == 2 %}★★☆☆☆{% endif %}
+                                        {% if i.rating == 3 %}★★★☆☆{% endif %}
+                                        {% if i.rating == 4 %}★★★★☆{% endif %}
+                                        {% if i.rating == 5 %}★★★★★{% endif %}
+                                    </span>
+                                    <img src="{{ i.image.url }}" width="100%">
+                                    <p class="mb-2">{{ i.content }}</p>
+
+                                    <!-- admin 리뷰 -->
+                                    {% for j in admin_comments %}
+                                    {% if j.restaurant.pk == i.pk %}
+                                    <div class="jumbotron mb-0 py-2">
+                                        <b><p class="m-0">사장님 리뷰</p></b>
+                                        <span>
+                                            {{ j.content }}
+                                        </span>
+                                    </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                    <!-- /admin 리뷰-->
+                                </div>
+
+                            </div>
+                            {% endfor %}
+                            <!-- /user 리뷰-->
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="notice">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-1 col-md-2 col-xs-0"></div>
+    </div>
+</div>
+
+<!-- / PC버전-->
+
+<!-- 모바일 버전 -->
+<div class="container d-block d-sm-none" style="background-color:white">
+    <div class="row">
+        <div class="col-lg-3 col-sm-1 col-md-2 col-xs-0"></div>
+        <div class="col-lg-6 col-sm-10 col-md-8 col-xs-12 p-0">
+            <div>
+                <h3 class="text-center mt-4">{{ restaurant.name }}</h3>
+                <div class="text-center py-2">
+                    {% if reviews_average == 0 %}
+                        <img src="{% static 'image/whitestar.svg' %}">
+                        <img src="{% static 'image/whitestar.svg' %}">
+                        <img src="{% static 'image/whitestar.svg' %}">
+                        <img src="{% static 'image/whitestar.svg' %}">
+                        <img src="{% static 'image/whitestar.svg' %}">
+                    {% endif %}
+                    {% if 1 < reviews_average and reviews_average < 2 %}
+                        <img src="{% static 'image/star.png' %}">
+                        <img src="{% static 'image/whitestar.svg' %}">
+                        <img src="{% static 'image/whitestar.svg' %}">
+                        <img src="{% static 'image/whitestar.svg' %}">
+                        <img src="{% static 'image/whitestar.svg' %}">
+                    {% endif %}
+                    {% if 2 < reviews_average and reviews_average < 3 %}
+                    ★★☆☆☆
+                    {% endif %}
+                    {% if 3 < reviews_average and reviews_average < 4 %}★★★☆☆{% endif %}
+                    {% if 4 < reviews_average and reviews_average < 5 %}
+                        <img class="m-0" width="30px" src="{% static 'image/star.png' %}">
+                        <img width="30px" src="{% static 'image/star.png' %}">
+                        <img width="30px" src="{% static 'image/star.png' %}">
+                        <img width="30px" src="{% static 'image/star.png' %}">
+                        <img width="30px" src="{% static 'image/whitestar.svg' %}">
+                    {% endif %}
+                    {% if reviews_average == 5 %}
+                        <img width="30px" src="{% static 'image/star.png' %}">
+                        <img width="30px" src="{% static 'image/star.png' %}">
+                        <img width="30px" src="{% static 'image/star.png' %}">
+                        <img width="30px" src="{% static 'image/star.png' %}">
+                        <img width="30px" src="{% static 'image/star.png' %}">
+                    {% endif %}
+                    <span class="m-0">{{ reviews_average }}</span>
+                </div>
+                <h6 class="text-center my-2" style="color:rgb(90, 90, 90)">최근리뷰 <span id="m_reviewCount"></span> | 최근사장님댓글 {{ admin_comments_count }}</h6>
+                <hr>
+                <div class="container my-3">
+                    <div class="row px-3">
+                        <div class="col-4 py-2" style="border:1px solid rgb(210,210,210)">
+                            <div class="text-center">
+                                <p class="mt-1 mb-0">길찾기</p>
+                            </div>
+                        </div>
+                        <div class="col-4 py-2 px-0" style="border:1px solid rgb(210,210,210)">
+                            <div class="text-center">
+                                <p class="mt-1 mb-0">좋아요 {{ like_count }}</p>
+                            </div>
+                        </div>
+                        <div class="col-4 py-2" style="border:1px solid rgb(210,210,210)">
+                            <div class="text-center">
+                                <p class="mt-1 mb-0">팔로우</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 메뉴 정보 리뷰 공지사항 TAB -->
+                <ul class="nav nav-tabs">
+                    <li class="nav-item text-center px-0" style="width:25%;color:black">
+                        <a style="color:black" class="nav-link active px-0" data-toggle="tab" href="#m_menu">메뉴 {{ menu_count }}</a>
+                    </li>
+                    <li class="nav-item text-center px-0" style="width:25%;color:black">
+                        <a style="color:black" class="nav-link px-0" data-toggle="tab" href="#m_info">정보</a>
+                    </li>
+                    <li class="nav-item text-center px-0" style="width:25%;color:black">
+                        <a style="color:black" class="nav-link px-0" data-toggle="tab" href="#m_review">리뷰</a>
+                    </li>
+                    <li class="nav-item text-center px-0" style="width:25%;color:black">
+                        <a style="color:black" class="nav-link px-0" data-toggle="tab" href="#m_notice">공지사항</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="m_menu">
+                        <div id="accordion" class="tab-pane fade show active">
+                            {% for j in menu_category %}
+                              <div class="card">
+                                  <a class="card-link" data-toggle="collapse" href="#collapse{{ j.name }}" style="width:100%">
+                                      <div class="card-header" style="background-color:rgb(200, 200, 200)">
+                                          {{ j.name }}
+                                      </div>
+                                  </a>
+                                  {% for i in menus %}
+                                  {% if j.name == i.category.name %}
+                                  <div id="collapse{{ j.name }}" class="collapse show">
+                                      <div class="card-body p-0">
+                                          <div id="{{ j.name }}" class="collapse show" aria-labelledby="h{{ j.name }}">
+                                              <a href="#" style="color:black;text-decoration:none">
+                                                  <div class="py-2 px-3" style="border-bottom:1px solid rgb(220,220,220)">
+                                                      <h6><strong>{{ i.name }}</strong></h6>
+                                                      <span id="price{{i.pk}}"></span>
+                                                      <script>
+                                                        var pk = "{{ i.pk }}";
+                                                        var price = "{{ i.price }}";
+                                                        var temp_str = String(price);
+                                                        for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++) {
+                                                            retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;
+                                                        }
+                                                        document.getElementById("price"+pk).textContent = retValue + "원";
+                                                      </script>
+                                                </div>
+                                              </a>
+                                          </div>
+                                      </div>
+                                  </div>
+                                {% endif %}
+                                {% endfor %}
+                              </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="m_info">
+                        <div class="container pb-4">
+                            <h5 class="mt-3 mb-0">가게 소개</h5>
+                            <p class="p-0">{{ restaurant.introduction|safe }}</p>
+
+                            <h5 class="mt-5">영업정보</h5>
+                            <table>
+                                <tr>
+                                    <td style="width:5rem">운영시간</td>
+                                    <td class="pl-3">{{ restaurant.businessHours }}</td>
+                                </tr>
+                                <tr>
+                                    <td>휴무일</td>
+                                    <td class="pl-3">{{ restaurant.closedDay }}</td>
+                                </tr>
+                                <tr>
+                                    <td>전화번호</td>
+                                    <td class="pl-3"><a href="tel:{{ restaurant.tel }}">{{ restaurant.tel }}</a></td>
+                                </tr>
+                            </table>
+
+                            <h5 class="mt-5">사업자 정보</h5>
+                            <table>
+                                <tr>
+                                    <td style="width:5rem">대표자명</td>
+                                    <td class="pl-3">{{ restaurant.businessLicenseRepresentative }}</td>
+                                </tr>
+                                <tr>
+                                    <td>상호명</td>
+                                    <td class="pl-3">{{ restaurant.businessLicenseMutualName }}</td>
+                                </tr>
+                                <tr>
+                                    <td>사업자 주소</td>
+                                    <td class="pl-3">{{ restaurant.address }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>사업자<br>등록번호</td>
+                                    <td class="pl-3">{{ restaurant.businessLicenseNumber }}</td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="m_review">
+                        <div class="container">
+                            <div class="p-3">
+                                <a href="#" type="button" style="width:100%;"><div class="text-center p-3" style="border-radius:15px;border:1px solid rgb(210,210,210)">리뷰 쓰기</div></a>
+                            </div>
+                            <!-- user 리뷰 -->
+                            {% for i in comments %}
+                            <div class="row pb-4">
+                                <div class="col-2 p-0">
+                                    <a href="{% url 'accounts:profile_review' i.user.username %}"><img width="100%" src="{% static 'image/mapbox-icon.png' %}"></a>
+                                </div>
+                                <div class="col-10 pl-0">
+                                    <b><a href="{% url 'accounts:profile_review' i.user.username %}">{{ i.user }}</a></b><br>
+                                    <span style="color:gold">
+                                        {% if i.rating == 1 %}★☆☆☆☆{% endif %}
+                                        {% if i.rating == 2 %}★★☆☆☆{% endif %}
+                                        {% if i.rating == 3 %}★★★☆☆{% endif %}
+                                        {% if i.rating == 4 %}★★★★☆{% endif %}
+                                        {% if i.rating == 5 %}★★★★★{% endif %}
+                                    </span>
+                                    <img src="{{ i.image.url }}" width="100%">
+                                    <p class="mb-2">{{ i.content }}</p>
+
+                                    <!-- admin 리뷰 -->
+                                    {% for j in admin_comments %}
+                                    {% if j.restaurant.pk == i.pk %}
+                                    <div class="jumbotron mb-0 py-2">
+                                        <b><p class="m-0">사장님 리뷰</p></b>
+                                        <span>
+                                            {{ j.content }}
+                                        </span>
+                                    </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                    <!-- /admin 리뷰-->
+                                </div>
+
+                            </div>
+                            {% endfor %}
+                            <!-- /user 리뷰-->
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="m_notice">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-1 col-md-2 col-xs-0"></div>
+    </div>
+</div>
+<!-- /모바일 버전 -->
+
+<script>
+    var reviewCount = "{{ reviewsCount }}";
+    var temp_str = String(reviewCount);
+    for(var i = 0 , retValue = String() , stop = temp_str.length; i < stop ; i++) {
+        retValue = ((i%3) == 0) && i != 0 ? temp_str.charAt((stop - i) -1) + "," + retValue : temp_str.charAt((stop - i) -1) + retValue;
+    }
+    document.getElementById("reviewCount").textContent = retValue;
+    document.getElementById("m_reviewCount").textContent = retValue;
+</script>
+{% endblock %}

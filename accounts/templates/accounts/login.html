@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+    <head>
+        <meta charset="utf-8">
+        <!-- 부트스트랩 모바일 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- 부트스트랩 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <!-- fontawesome -->
+        {% load static %}
+        <script src="{% static 'js/fontawesome.js' %}"></script>
+    </head>
+    <style>
+        *:focus {
+            outline:none !important;
+        }
+        * {-webkit-tap-highlight-color:rgba(0,0,0,0) !important;}
+        a {
+            color:black;
+            text-decoration:none !important;
+        }
+        body{
+            background-color:black;
+        }
+        input::placeholder {
+            color: white;
+        }
+    </style>
+    <body>
+        {% load static %}
+        <!--<div class="container text-center d-block d-sm-none">-->
+        <div class="container text-center">
+            <div style="height:50px"></div>
+            <h2 style="color:white">BizchoolPay</h2>
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10 py-5 px-4" style="border: 2px solid white;border-radius:15px">
+                    <img class="my-3" width="130px" src="{% static 'image/accounts.png' %}">
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        {{ form.username }}
+                        {{ form.password }}
+                        <input name="method" type="text" value="mobile" style="visibility:hidden">
+                        <button class="form-control mt-0" style="background-color:black;border-color: white" type="submit"><span style="color:white">로그인</span></button>
+                        <button class="form-control mt-2" data-target="#myModal" data-toggle="modal" style="background-color:black;border-color: white" type="button"><span style="color:white">회원가입</span></button>
+                        <div class="modal" id="myModal">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+
+                              <!-- Modal Header -->
+                              <div class="modal-header">
+                                <h4 class="modal-title">Connect</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>
+
+                              <!-- Modal body -->
+                              <div class="modal-body">
+                                  <strong>Email</strong> : bizchoollab@naver.com<br>
+                                  <strong>Phone</strong> : 010-3968-3572
+                              </div>
+
+                              <!-- Modal footer -->
+                              <div class="modal-footer">
+                                <button type="button" class="btn" data-dismiss="modal">Close</button>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-1"></div>
+            </div>
+        </div>
+    </body>
+</html>

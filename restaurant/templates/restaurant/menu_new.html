@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container">
+    <div class="row my-4">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <form action="" method="post" name="menu">
+                {% csrf_token %}
+                <div class="card" style="border-radius: 12px !important; box-shadow: 0px 0px 20px #000;">
+                    <div class="card-header" style="border-top-left-radius: 12px;border-top-right-radius: 12px !important">
+                        <h2 class="text-center" style="color:gray">메뉴 등록</h2>
+                    </div>
+                    <div class="card-body" style="background-color: #FDFDFD">
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <h5>카테고리</h5>
+                                <div class="row">
+                                    <div class="col-9 pr-0">
+                                        {{ menu_form.category }}
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="row">
+                                            <div class="col-6 p-0 text-center" style="height:100%">
+                                                <button type="button" class="btn btn-primary" style="background: #FDFDFD;border-color: #FDFDFD">
+                                                    <img src="{% static 'image/edit.svg' %}">
+                                                </button>
+                                            </div>
+                                            <div class="col-6 p-0" style="height:100%">
+                                                <button type="button" class="btn btn-primary" style="background: #FDFDFD;border-color: #FDFDFD">
+                                                    <img src="{% static 'image/add.svg' %}">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <h5>메뉴 이름</h5>
+                                {{ menu_form.name }}
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <h5>가격</h5>
+                                {{ menu_form.price }}
+                            </div>
+                            <div class="col-6">
+                                <h5>메뉴 사진</h5>
+                                {{ menu_form.image }}
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                <script>
+                                    // Add the following code if you want the name of the file appear on select
+                                    $(".custom-file-input").on("change", function() {
+                                      var fileName = $(this).val().split("\\").pop();
+                                      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <h5>메뉴 소개</h5>
+                                {{ menu_form.content }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end" style="border-bottom-left-radius: 12px;border-bottom-right-radius: 12px !important">
+                        <button type="submit" class="btn btn-primary px-3">등록</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-2">
+        </div>
+    </div>
+</div>
+
+{% endblock %}

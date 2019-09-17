@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.shortcuts import reverse
 
 
 class Area(models.Model):
@@ -24,10 +25,10 @@ class Restaurant(models.Model):
     category = models.ForeignKey(RestaurantCategory, on_delete=models.CASCADE)
     area = models.ForeignKey(Area, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=50)
-    method = models.CharField(max_length=50, blank=True, null=True)
+    latitude = models.CharField(max_length=50)
+    longitude = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
     account = models.CharField(max_length=50)
-    location_map = models.CharField(max_length=100, blank=True, null=True)
     tel = models.CharField(max_length=50, blank=True, null=True)
     introduction = models.TextField()
     closedDay = models.CharField(max_length=50)
@@ -46,6 +47,9 @@ class Restaurant(models.Model):
     @property
     def total_likes(self):
         return self.likes.count()  # likes 컬럼의 값의 갯수를 센다
+
+    def get_absolute_url(self):
+        return reverse('restaurant:restaurant_detail', args=[self.pk])
 
 
 class MenuCategory(models.Model):
