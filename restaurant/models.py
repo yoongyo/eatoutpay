@@ -25,8 +25,6 @@ class Restaurant(models.Model):
     category = models.ForeignKey(RestaurantCategory, on_delete=models.CASCADE)
     area = models.ForeignKey(Area, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=50)
-    latitude = models.CharField(max_length=50)
-    longitude = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
     account = models.CharField(max_length=50)
     tel = models.CharField(max_length=50, blank=True, null=True)
@@ -34,14 +32,16 @@ class Restaurant(models.Model):
     closedDay = models.CharField(max_length=50)
     representative_menu = models.CharField(max_length=30)
     representative_image = models.ImageField(upload_to='representative_image/', blank=True, null=True)
-    map_image = models.ImageField(upload_to='map_image/', blank=True, null=True)
-    map_content = models.CharField(max_length=50)
     businessHours = models.CharField(max_length=50)
     businessLicenseRepresentative = models.CharField(max_length=50)
     businessLicenseMutualName = models.CharField(max_length=50)
     businessLicenseNumber = models.CharField(max_length=50)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='likes', blank=True)
     follow = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='follow', blank=True)
+    latitude = models.CharField(max_length=50)
+    longitude = models.CharField(max_length=50)
+    map_image = models.ImageField(upload_to='map_image/', blank=True, null=True)
+    map_content = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
