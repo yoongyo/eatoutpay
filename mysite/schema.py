@@ -1,11 +1,12 @@
 from restaurant.schema import Query as RestaurantQuery
 from accounts.schema import Query as UserQuery
+from announcement.schema import Query as AnnouncementQuery
 from accounts.schema import Mutation as UserMutation
 import graphene
 import graphql_jwt
 
 
-class Query(RestaurantQuery, UserQuery, graphene.ObjectType):
+class Query(RestaurantQuery, UserQuery, AnnouncementQuery, graphene.ObjectType):
     pass
 
 
