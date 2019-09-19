@@ -35,7 +35,7 @@ class Query(graphene.AbstractType):
 
     all_advertisement = graphene.List(AdvertisementType)
 
-    all_announcement = graphene.List(AdvertisementType)
+    all_announcement = graphene.List(AnnouncementType)
 
     all_notice = graphene.List(NoticeType)
 
@@ -52,4 +52,4 @@ class Query(graphene.AbstractType):
         return Advertisement.objects.all()
 
     def resolve_all_announcement(self, context, **kwargs):
-        return Advertisement.objects.all()
+        return Announcement.objects.all()
