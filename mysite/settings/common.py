@@ -18,7 +18,8 @@ INSTALLED_APPS = [
     'restaurant',
     'graphene_django',
     'accounts',
-    'admins'
+    'admins',
+    'announcement'
 ]
 
 
