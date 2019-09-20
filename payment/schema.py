@@ -1,8 +1,10 @@
 import graphene
 from graphene_django.types import DjangoObjectType
 from .models import PayMethod, Basket
-from restaurant.schema import RestaurantInput
-from accounts.schema import UserInput
+from django.contrib.auth.models import User
+import sys
+sys.path.append('..')
+from restaurant.models import Review, Restaurant
 
 
 class BasketType(DjangoObjectType):
@@ -13,11 +15,6 @@ class BasketType(DjangoObjectType):
 class PayMethodType(DjangoObjectType):
     class Meta:
         model = PayMethod
-
-
-class PayMethodInput(graphene.InputObjectType):
-    name = graphene.String()
-    number = graphene.Int()
 
 
 class CreateBasket(graphene.Mutation):
@@ -34,8 +31,8 @@ class CreateBasket(graphene.Mutation):
     basket = graphene.Field(BasketType)
 
     def mutate(self, info, user, restaurant, sumPrice, menus, payment, dateTime, date):
-        _basket = Basket.objects.create(user__pk=user, restaurant__pk=restaurant, sumPrice=sumPrice,
-                                        menus=menus, payment__pk=payment, date=date, dateTime=dateTime)
+        _basket = Basket.objects.create(user=User.objects.get(id=user), restaurant=Restaurant.objects.get(id=restaurant), sumPrice=sumPrice,
+                                        menus=menus, payment=PayMethod.objects.get(id=payment), date=date, dateTime=dateTime)
         return CreateBasket(basket=_basket)
 
 

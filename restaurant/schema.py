@@ -30,29 +30,6 @@ class RestaurantType(DjangoObjectType):
         model = Restaurant
 
 
-class RestaurantInput(graphene.InputObjectType):
-    admin = graphene.InputField(UserInput)
-    category = graphene.InputField(RestaurantCategoryInput)
-    area = graphene.InputField(AreaInput)
-    name = graphene.String()
-    address = graphene.String()
-    account = graphene.String()
-    tel = graphene.String()
-    introduction = graphene.String()
-    closedDay = graphene.String()
-    representative_menu = graphene.String()
-    businessHours = graphene.String()
-    businessLicenseRepresentative = graphene.String()
-    businessLicenseMutualName = graphene.String()
-    businessLicenseNumber = graphene.String()
-    latitude = graphene.String()
-    longitude = graphene.String()
-    map_content = graphene.String()
-    likes = graphene.List(UserInput)
-    follow = graphene.List(UserInput)
-    map_image = Upload()
-
-
 class MenuCategoryType(DjangoObjectType):
     class Meta:
         model = MenuCategory
