@@ -14,7 +14,7 @@ class PayMethodType(DjangoObjectType):
 
 
 class CreateBasket(graphene.Mutation):
-    user = graphene.Int()
+    user = graphene.ID()
     restaurant = graphene.Int()
     sumPrice = graphene.String()
     menus = graphene.String()
@@ -23,7 +23,7 @@ class CreateBasket(graphene.Mutation):
     date = graphene.Date()
 
     class Arguments:
-        user = graphene.Int()
+        user = graphene.ID()
         restaurant = graphene.Int()
         sumPrice = graphene.String()
         menus = graphene.String()
