@@ -1,9 +1,6 @@
 import graphene
 from graphene_django.types import DjangoObjectType
 from .models import RestaurantCategory, Restaurant, MenuCategory, Menu, Area, Review
-from accounts.schema import UserInput
-from graphene_file_upload.scalars import Upload
-
 
 class AreaType(DjangoObjectType):
     class Meta:
@@ -17,12 +14,6 @@ class AreaInput(graphene.InputObjectType):
 class RestaurantCategoryType(DjangoObjectType):
     class Meta:
         model = RestaurantCategory
-
-
-class RestaurantCategoryInput(graphene.InputObjectType):
-    name = graphene.String()
-    sequence = graphene.Int()
-    image = Upload
 
 
 class RestaurantType(DjangoObjectType):
@@ -131,15 +122,3 @@ class Query(graphene.AbstractType):
 
         return None
 
-
-# class Upload(graphene.Scalar):
-#     def serialize(self):
-#         pass
-#
-# class ReviewMutation(graphene.Mutation):
-#     class Arguments:
-#         id = graphene.ID()
-#         user = graphene.
-#         restaurant
-#         image = Upload()
-#         content = graphene.String(required=True)
