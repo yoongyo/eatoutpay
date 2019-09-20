@@ -46,9 +46,9 @@ class CreateBasket(graphene.Mutation):
 
 
 class Query(graphene.AbstractType):
-    all_payMethod = graphene.List(BasketType)
+    all_payMethod = graphene.List(PayMethodType)
 
-    all_basket = graphene.List(PayMethodType)
+    all_basket = graphene.List(BasketType)
 
     def resolve_all_payMethod(self, context, **kwargs):
         return PayMethod.objects.all()
