@@ -19,7 +19,8 @@ INSTALLED_APPS = [
     'graphene_django',
     'accounts',
     'admins',
-    'announcement'
+    'announcement',
+    'payment'
 ]
 
 
