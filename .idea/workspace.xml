@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e657847c-1c27-4fbe-97f1-f3ec1a528d20" name="Default Changelist" comment="" />
+    <list default="true" id="e657847c-1c27-4fbe-97f1-f3ec1a528d20" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/payment/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/payment/schema.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +111,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="4136" />
-          <entry key="py" value="12055" />
+          <entry key="py" value="12186" />
           <entry key="txt" value="44" />
         </counts>
       </usages-collector>
@@ -117,7 +119,7 @@
         <counts>
           <entry key="HTML" value="4136" />
           <entry key="PLAIN_TEXT" value="44" />
-          <entry key="Python" value="12055" />
+          <entry key="Python" value="12186" />
         </counts>
       </usages-collector>
     </session>
@@ -200,13 +202,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/payment/schema.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+            <state relative-caret-position="370">
+              <caret line="33" column="39" lean-forward="true" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1568965857655" expanded="true" signature="305:1310" ph="..." />
-                <marker date="1568965857655" expanded="true" signature="1345:1346" ph="..." />
-                <marker date="1568965857655" expanded="true" signature="1663:1705" ph="..." />
+                <marker date="1568966499498" expanded="true" signature="305:1315" ph="..." />
+                <marker date="1568966499498" expanded="true" signature="1350:1351" ph="..." />
+                <marker date="1568966499498" expanded="true" signature="1668:1710" ph="..." />
               </folding>
             </state>
           </provider>
@@ -324,8 +326,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="40" />
-    <option name="y" value="23" />
+    <option name="x" value="114" />
+    <option name="y" value="143" />
     <option name="width" value="1323" />
     <option name="height" value="834" />
   </component>
@@ -421,7 +423,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="40" y="23" width="1323" height="834" extended-state="0" />
+    <frame x="114" y="143" width="1323" height="834" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21582182" />
@@ -788,13 +790,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/payment/schema.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+        <state relative-caret-position="370">
+          <caret line="33" column="39" lean-forward="true" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1568965857655" expanded="true" signature="305:1310" ph="..." />
-            <marker date="1568965857655" expanded="true" signature="1345:1346" ph="..." />
-            <marker date="1568965857655" expanded="true" signature="1663:1705" ph="..." />
+            <marker date="1568966499498" expanded="true" signature="305:1315" ph="..." />
+            <marker date="1568966499498" expanded="true" signature="1350:1351" ph="..." />
+            <marker date="1568966499498" expanded="true" signature="1668:1710" ph="..." />
           </folding>
         </state>
       </provider>

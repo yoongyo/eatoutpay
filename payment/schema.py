@@ -14,13 +14,15 @@ class PayMethodType(DjangoObjectType):
 
 
 class CreateBasket(graphene.Mutation):
-    user = graphene.ID()
+    user = graphene.Int()
     restaurant = graphene.Int()
     sumPrice = graphene.String()
     menus = graphene.String()
     payment = graphene.Int()
     dataTime = graphene.DateTime()
     date = graphene.Date()
+
+    basket = graphene.Field(BasketType)
 
     class Arguments:
         user = graphene.ID()
@@ -32,19 +34,9 @@ class CreateBasket(graphene.Mutation):
         date = graphene.Date()
 
     def mutate(self, info, user, restaurant, sumPrice, menus, payment, dateTime, date):
-        basket = Basket(user=user, restaurant=restaurant, sumPrice=sumPrice, menus=menus,
-                        payment=payment, date=date, dateTime=dateTime)
-        basket.save()
-
-        return CreateBasket(
-            user=basket.user,
-            restaurant=basket.restaurant,
-            sumPrice=basket.sumPrice,
-            menus=basket.menus,
-            payment=payment,
-            dateTime=dateTime,
-            date=date
-        )
+        _basket = Basket.objects.create(user=user, restaurant=restaurant, sumPrice=sumPrice,
+                                       menus=menus, payment=payment, dateTime=date, date=date)
+        return CreateBasket(basket=_basket)
 
 
 class Query(graphene.AbstractType):
