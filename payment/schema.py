@@ -28,6 +28,8 @@ class CreateBasket(graphene.Mutation):
         sumPrice = graphene.String()
         menus = graphene.String()
         payment = graphene.Int()
+        dataTime = graphene.DateTime()
+        date = graphene.Date()
 
     def mutate(self, user, restaurant, sumPrice, menus, payment, dateTime, date):
         basket = Basket(user=user, restaurant=restaurant, sumPrice=sumPrice, menus=menus,
