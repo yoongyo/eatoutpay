@@ -14,6 +14,12 @@ class UserType(DjangoObjectType):
         model = get_user_model()
 
 
+class UserInput(graphene.InputObjectType):
+    username = graphene.String(required=True)
+    password = graphene.String(required=True)
+    email = graphene.String(required=False)
+
+
 class CreateUser(graphene.Mutation):
     user = graphene.Field(UserType)
 

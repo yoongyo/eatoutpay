@@ -1,6 +1,8 @@
 import graphene
 from graphene_django.types import DjangoObjectType
 from .models import RestaurantCategory, Restaurant, MenuCategory, Menu, Area, Review
+from accounts.schema import UserInput
+from graphene_file_upload.scalars import Upload
 
 
 class AreaType(DjangoObjectType):
@@ -8,14 +10,47 @@ class AreaType(DjangoObjectType):
         model = Area
 
 
+class AreaInput(graphene.InputObjectType):
+    name=graphene.String()
+
+
 class RestaurantCategoryType(DjangoObjectType):
     class Meta:
         model = RestaurantCategory
 
 
+class RestaurantCategoryInput(graphene.InputObjectType):
+    name = graphene.String()
+    sequence = graphene.Int()
+    image = Upload
+
+
 class RestaurantType(DjangoObjectType):
     class Meta:
         model = Restaurant
+
+
+class RestaurantInput(graphene.InputObjectType):
+    admin = graphene.InputField(UserInput)
+    category = graphene.InputField(RestaurantCategoryInput)
+    area = graphene.InputField(AreaInput)
+    name = graphene.String()
+    address = graphene.String()
+    account = graphene.String()
+    tel = graphene.String()
+    introduction = graphene.String()
+    closedDay = graphene.String()
+    representative_menu = graphene.String()
+    businessHours = graphene.String()
+    businessLicenseRepresentative = graphene.String()
+    businessLicenseMutualName = graphene.String()
+    businessLicenseNumber = graphene.String()
+    latitude = graphene.String()
+    longitude = graphene.String()
+    map_content = graphene.String()
+    likes = graphene.List(UserInput)
+    follow = graphene.List(UserInput)
+    map_image = Upload()
 
 
 class MenuCategoryType(DjangoObjectType):

@@ -1,8 +1,9 @@
 import graphene
 from graphene_django.types import DjangoObjectType
 from .models import PayMethod, Basket
-from restaurant.schema import RestaurantType
-from accounts.schema import UserType
+from restaurant.schema import RestaurantInput
+from accounts.schema import UserInput
+
 
 class BasketType(DjangoObjectType):
     class Meta:
@@ -14,24 +15,27 @@ class PayMethodType(DjangoObjectType):
         model = PayMethod
 
 
-class BasketInput(graphene.InputObjectType):
-    user = graphene.Field(UserType)
-    restaurant = graphene.Field(RestaurantType)
-    sumPrice = graphene.String()
-    menus = graphene.String()
-    payment = graphene.Field(PayMethodType)
-    dataTime = graphene.DateTime()
-    date = graphene.Date()
+class PayMethodInput(graphene.InputObjectType):
+    name = graphene.String()
+    number = graphene.Int()
 
 
 class CreateBasket(graphene.Mutation):
-    basket = graphene.Field(BasketType)
 
     class Arguments:
-        basket_data = BasketInput(required=True)
+        user = graphene.Int()
+        restaurant = graphene.Int()
+        payment = graphene.Int()
+        sumPrice = graphene.String()
+        menus = graphene.String()
+        dateTime = graphene.DateTime()
+        date = graphene.Date()
 
-    def mutate(self, info, basket_data):
-        _basket = Basket.objects.create(**basket_data)
+    basket = graphene.Field(BasketType)
+
+    def mutate(self, info, user, restaurant, sumPrice, menus, payment, dateTime, date):
+        _basket = Basket.objects.create(user__pk=user, restaurant__pk=restaurant, sumPrice=sumPrice,
+                                        menus=menus, payment__pk=payment, date=date, dateTime=dateTime)
         return CreateBasket(basket=_basket)
 
 
