@@ -25,7 +25,7 @@ class CreateBasket(graphene.Mutation):
     basket = graphene.Field(BasketType)
 
     class Arguments:
-        user = graphene.ID()
+        user = graphene.Int()
         restaurant = graphene.Int()
         sumPrice = graphene.String()
         menus = graphene.String()
