@@ -16,5 +16,5 @@ class Basket(models.Model):
     sumPrice = models.CharField(max_length=50)
     menus = models.CharField(max_length=200)
     payment = models.ForeignKey(PayMethod, on_delete=models.CASCADE)
-    dateTime = models.DateTimeField(auto_now_add=True)
-    date = models.DateField(auto_now_add=True)
+    dateTime = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    date = models.DateField(auto_now_add=True, null=True, blank=True)
