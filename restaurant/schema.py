@@ -138,3 +138,23 @@ class Liked(graphene.Mutation):
         _liked = restaurant.likes.add(user)
 
         return Liked(liked=_liked)
+
+
+class Followed(graphene.Mutation):
+    class Arguments:
+        username = graphene.String()
+        restaurantId = graphene.Int()
+
+    followed = graphene.Field(RestaurantType)
+
+    def mutate(self, info, username, restaurantId):
+        user = User.objects.get(username=username)
+        restaurant = Restaurant.objects.get(pk=restaurantId)
+        _followed = restaurant.follow.add(user)
+
+        return Liked(liked=_followed)
+
+
+class Mutation(graphene.ObjectType):
+    liked = Liked.Field()
+    followed = Followed.Field()

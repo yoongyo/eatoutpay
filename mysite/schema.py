@@ -1,4 +1,5 @@
 from restaurant.schema import Query as RestaurantQuery
+from restaurant.schema import Mutation as RestaurantMutation
 from accounts.schema import Query as UserQuery
 from announcement.schema import Query as AnnouncementQuery
 from accounts.schema import Mutation as UserMutation
@@ -12,7 +13,7 @@ class Query(RestaurantQuery, UserQuery, AnnouncementQuery, PaymentQuery, graphen
     pass
 
 
-class Mutation(UserMutation, PaymentMutation, graphene.ObjectType,):
+class Mutation(UserMutation, PaymentMutation, RestaurantMutation, graphene.ObjectType,):
     token_auth = graphql_jwt.ObtainJSONWebToken.Field()
     verify_token = graphql_jwt.Verify.Field()
     refresh_token = graphql_jwt.Refresh.Field()
