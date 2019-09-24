@@ -1,6 +1,8 @@
 import graphene
 from graphene_django.types import DjangoObjectType
 from .models import RestaurantCategory, Restaurant, MenuCategory, Menu, Area, Review
+from django.contrib.auth.models import User
+
 
 class AreaType(DjangoObjectType):
     class Meta:
@@ -8,7 +10,7 @@ class AreaType(DjangoObjectType):
 
 
 class AreaInput(graphene.InputObjectType):
-    name=graphene.String()
+    name = graphene.String()
 
 
 class RestaurantCategoryType(DjangoObjectType):
@@ -122,3 +124,17 @@ class Query(graphene.AbstractType):
 
         return None
 
+
+class Liked(graphene.Mutation):
+    class Arguments:
+        username = graphene.String()
+        restaurantId = graphene.Int()
+
+    liked = graphene.Field(RestaurantType)
+
+    def mutate(self, info, username, restaurantId):
+        user = User.objects.get(username=username)
+        restaurant = Restaurant.objects.get(pk=restaurantId)
+        _liked = restaurant.likes.add(user)
+
+        return Liked(liked=_liked)
