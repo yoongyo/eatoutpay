@@ -135,7 +135,11 @@ class Liked(graphene.Mutation):
     def mutate(self, info, username, restaurantId):
         user = User.objects.get(username=username)
         restaurant = Restaurant.objects.get(pk=restaurantId)
-        _liked = restaurant.likes.add(user)
+
+        if restaurant.likes.filter(id=user.id).exists():
+            _liked = restaurant.likes.remove(user)
+        else:
+            _liked = restaurant.likes.add(user)
 
         return Liked(liked=_liked)
 
@@ -150,9 +154,13 @@ class Followed(graphene.Mutation):
     def mutate(self, info, username, restaurantId):
         user = User.objects.get(username=username)
         restaurant = Restaurant.objects.get(pk=restaurantId)
-        _followed = restaurant.follow.add(user)
 
-        return Liked(liked=_followed)
+        if restaurant.follo.filter(id=user.id).exists():
+            _followed = restaurant.follow.remove(user)
+        else:
+            _followed = restaurant.follow.add(user)
+
+        return Followed(followed=_followed)
 
 
 class Mutation(graphene.ObjectType):
