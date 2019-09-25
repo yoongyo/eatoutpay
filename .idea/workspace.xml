@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e657847c-1c27-4fbe-97f1-f3ec1a528d20" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/schema.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +74,7 @@
     <session id="-1329154830">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="51" />
+          <entry key="project.closed" value="52" />
           <entry key="project.open.time.0" value="8" />
           <entry key="project.open.time.1" value="9" />
           <entry key="project.open.time.2" value="1" />
@@ -113,7 +111,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="4136" />
-          <entry key="py" value="14296" />
+          <entry key="py" value="14337" />
           <entry key="txt" value="44" />
         </counts>
       </usages-collector>
@@ -121,7 +119,7 @@
         <counts>
           <entry key="HTML" value="4136" />
           <entry key="PLAIN_TEXT" value="44" />
-          <entry key="Python" value="14296" />
+          <entry key="Python" value="14337" />
         </counts>
       </usages-collector>
     </session>
@@ -149,11 +147,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/manage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="75">
+              <caret line="5" column="73" selection-start-line="5" selection-start-column="73" selection-end-line="5" selection-end-column="73" />
               <folding>
                 <element signature="e#22#31#0" expanded="true" />
               </folding>
@@ -161,18 +159,18 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/restaurant/schema.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="139" column="44" selection-start-line="139" selection-start-column="44" selection-end-line="139" selection-end-column="44" />
+            <state relative-caret-position="575">
+              <caret line="162" column="32" selection-start-line="162" selection-start-column="32" selection-end-line="162" selection-end-column="32" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1569416362510" expanded="true" signature="313:345" ph="..." />
-                <marker date="1569416362510" expanded="true" signature="444:446" ph="..." />
-                <marker date="1569416362510" expanded="true" signature="767:770" ph="..." />
-                <marker date="1569416362510" expanded="true" signature="768:770" ph="..." />
-                <marker date="1569416362510" expanded="true" signature="4019:4116" ph="..." />
+                <marker date="1569416533070" expanded="true" signature="313:345" ph="..." />
+                <marker date="1569416533070" expanded="true" signature="444:446" ph="..." />
+                <marker date="1569416533070" expanded="true" signature="767:770" ph="..." />
+                <marker date="1569416533070" expanded="true" signature="768:770" ph="..." />
+                <marker date="1569416533070" expanded="true" signature="4019:4116" ph="..." />
               </folding>
             </state>
           </provider>
@@ -324,14 +322,14 @@
         <option value="$PROJECT_DIR$/mysite/urls.py" />
         <option value="$PROJECT_DIR$/accounts/schema.py" />
         <option value="$PROJECT_DIR$/mysite/schema.py" />
-        <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/restaurant/schema.py" />
+        <option value="$PROJECT_DIR$/manage.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="233" />
-    <option name="y" value="56" />
+    <option name="x" value="230" />
+    <option name="y" value="23" />
     <option name="width" value="1078" />
     <option name="height" value="834" />
   </component>
@@ -750,27 +748,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manage.py">
+    <entry file="file://$PROJECT_DIR$/restaurant/schema.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="575">
+          <caret line="162" column="32" selection-start-line="162" selection-start-column="32" selection-end-line="162" selection-end-column="32" />
           <folding>
-            <element signature="e#22#31#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1569416533070" expanded="true" signature="313:345" ph="..." />
+            <marker date="1569416533070" expanded="true" signature="444:446" ph="..." />
+            <marker date="1569416533070" expanded="true" signature="767:770" ph="..." />
+            <marker date="1569416533070" expanded="true" signature="768:770" ph="..." />
+            <marker date="1569416533070" expanded="true" signature="4019:4116" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/schema.py">
+    <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="139" column="44" selection-start-line="139" selection-start-column="44" selection-end-line="139" selection-end-column="44" />
+        <state relative-caret-position="75">
+          <caret line="5" column="73" selection-start-line="5" selection-start-column="73" selection-end-line="5" selection-end-column="73" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <marker date="1569416362510" expanded="true" signature="313:345" ph="..." />
-            <marker date="1569416362510" expanded="true" signature="444:446" ph="..." />
-            <marker date="1569416362510" expanded="true" signature="767:770" ph="..." />
-            <marker date="1569416362510" expanded="true" signature="768:770" ph="..." />
-            <marker date="1569416362510" expanded="true" signature="4019:4116" ph="..." />
+            <element signature="e#22#31#0" expanded="true" />
           </folding>
         </state>
       </provider>

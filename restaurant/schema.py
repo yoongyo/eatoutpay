@@ -155,7 +155,7 @@ class Followed(graphene.Mutation):
         user = User.objects.get(username=username)
         restaurant = Restaurant.objects.get(pk=restaurantId)
 
-        if restaurant.follo.filter(id=user.id).exists():
+        if restaurant.follow.filter(id=user.id).exists():
             _followed = restaurant.follow.remove(user)
         else:
             _followed = restaurant.follow.add(user)
