@@ -2,6 +2,7 @@ import graphene
 from graphene_django.types import DjangoObjectType
 from .models import RestaurantCategory, Restaurant, MenuCategory, Menu, Area, Review
 from django.contrib.auth.models import User
+from graphene_file_upload.scalars import Upload
 
 
 class AreaType(DjangoObjectType):
@@ -163,6 +164,28 @@ class Followed(graphene.Mutation):
         return Followed(followed=_followed)
 
 
+class CreateReview(graphene.Mutation):
+    class Arguments:
+        username = graphene.String()
+        restaurantId = graphene.Int()
+        content = graphene.String()
+        image1 = Upload()
+        image2 = Upload()
+        image3 = Upload()
+        created_at = graphene.String()
+
+    review = graphene.Field(ReviewType)
+
+    def mutate(self, info, username, restaurantId, content, image1, image2, image3):
+        user = User.objects.get(username=username)
+        restaurant = Restaurant.objects.get(pk=restaurantId)
+        _review = Review.objects.create(user=user, restaurant=restaurant, content=content,
+                                        image1=image1, image2=image2, image3=image3)
+
+        return CreateReview(basket=_review)
+
+
 class Mutation(graphene.ObjectType):
     liked = Liked.Field()
     followed = Followed.Field()
+    create_review = CreateReview.Field()

@@ -82,7 +82,9 @@ class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
     content = models.TextField()
-    image = models.ImageField(upload_to='review_image/', blank=True, null=True)
+    image1 = models.ImageField(upload_to='review_image/', blank=True, null=True)
+    image2 = models.ImageField(upload_to='review_image/', blank=True, null=True)
+    image3 = models.ImageField(upload_to='review_image/', blank=True, null=True)
     created_at = models.DateField(auto_now_add=True)
 
     def __str__(self):
