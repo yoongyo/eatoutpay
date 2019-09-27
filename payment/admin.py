@@ -3,7 +3,7 @@ from .models import Basket, PayMethod
 
 
 class BasketAdmin(admin.ModelAdmin):
-    list_display = ['user']
+    list_display = ['user', 'restaurant', 'payment', 'sumPrice', 'menus']
 
 
 class PayMethodAdmin(admin.ModelAdmin):

@@ -9,6 +9,9 @@ class PayMethod(models.Model):
     name = models.CharField(max_length=50)
     number = models.PositiveIntegerField()
 
+    def __str__(self):
+        return self.name
+
 
 class Basket(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
@@ -18,3 +21,6 @@ class Basket(models.Model):
     payment = models.ForeignKey(PayMethod, on_delete=models.CASCADE)
     dateTime = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     date = models.DateField(auto_now_add=True, null=True, blank=True)
+
+    def __str__(self):
+        return self.restaurant
