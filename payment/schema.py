@@ -25,14 +25,12 @@ class CreateBasket(graphene.Mutation):
         payment = graphene.Int()
         sumPrice = graphene.String()
         menus = graphene.String()
-        dateTime = graphene.DateTime()
-        date = graphene.Date()
 
     basket = graphene.Field(BasketType)
 
-    def mutate(self, info, user, restaurant, sumPrice, menus, payment, dateTime, date):
+    def mutate(self, info, user, restaurant, sumPrice, menus, payment):
         _basket = Basket.objects.create(user=User.objects.get(id=user), restaurant=Restaurant.objects.get(id=restaurant), sumPrice=sumPrice,
-                                        menus=menus, payment=PayMethod.objects.get(id=payment), date=date, dateTime=dateTime)
+                                        menus=menus, payment=PayMethod.objects.get(id=payment))
         return CreateBasket(basket=_basket)
 
 
