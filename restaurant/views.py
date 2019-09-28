@@ -1,7 +1,12 @@
-from django.shortcuts import render, get_object_or_404, reverse, HttpResponseRedirect, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import MenuCategory, Menu, Restaurant, Review
 from .forms import RestaurantForm, MenuForm, MenuCategoryForm
 from django.contrib.auth.decorators import login_required
+from .serializers import ReviewSerializer
+from rest_framework.views import APIView
+from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.response import Response
+from rest_framework import status
 import sys
 sys.path.append('..')
 from admins.models import AdminComment
@@ -142,3 +147,21 @@ def menu_category_new(request, rpk):
         'form': form
     })
 
+
+class ReviewViewSet(APIView):
+    pass
+    parser_classes = (MultiPartParser, FormParser)
+
+    def get(self, request, *args, **kwargs):
+        reviews = Review.objects.all()
+        serializer = ReviewSerializer(reviews, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, *args, **kwargs):
+        reviews_serializer = ReviewSerializer(data=request.data)
+        if reviews_serializer.is_valid():
+            reviews_serializer.save()
+            return Response(reviews_serializer.data, status=status.HTTP_201_CREATED)
+
+        else:
+            return Response(reviews_serializer.errors, status=status.HTTP_400_BAD_REQUEST)

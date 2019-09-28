@@ -85,7 +85,7 @@ class Review(models.Model):
     image1 = models.ImageField(upload_to='review_image/', blank=True, null=True)
     image2 = models.ImageField(upload_to='review_image/', blank=True, null=True)
     image3 = models.ImageField(upload_to='review_image/', blank=True, null=True)
-    created_at = models.DateField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.restaurant.name

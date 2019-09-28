@@ -1,7 +1,9 @@
-from django.conf.urls import url, re_path
+from django.conf.urls import re_path
 from . import views
 
+
 urlpatterns = [
+    re_path(r'^api/reviews/$', views.ReviewViewSet.as_view(), name='reviews'),
     re_path(r'^newRestaurant/$', views.restaurant_new, name='restaurant_new'),
     re_path(r'^$', views.restaurant_list, name='restaurant_list'),
     re_path(r'^(?P<rpk>\d+)/$', views.restaurant_detail, name='restaurant_detail'),

@@ -20,7 +20,8 @@ INSTALLED_APPS = [
     'accounts',
     'admins',
     'announcement',
-    'payment'
+    'payment',
+    'rest_framework',
 ]
 
 
@@ -29,6 +30,11 @@ GRAPHENE = {
     'MIDDLEWARE': [
         'graphql_jwt.middleware.JSONWebTokenMiddleware',
     ],
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }
 
 AUTHENTICATION_BACKENDS = [

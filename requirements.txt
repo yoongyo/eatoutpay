@@ -9,3 +9,4 @@ django-filter
 psycopg2
 psycopg2-binary
 graphene-file-upload
+djangorestframework
