@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import MenuCategory, Menu, Restaurant, Review, Area, Region, City
+from .models import MenuCategory, Menu, Restaurant, Review, Area, Region
 from .forms import RestaurantForm, MenuForm, MenuCategoryForm
 from django.contrib.auth.decorators import login_required
 from .serializers import ReviewSerializer
