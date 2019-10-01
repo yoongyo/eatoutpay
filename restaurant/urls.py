@@ -3,6 +3,8 @@ from . import views
 
 
 urlpatterns = [
+    re_path(r'^getRegion/$', views.getRegion, name='getArea'),
+    re_path(r'^getArea/$', views.getArea),
     re_path(r'^api/reviews/$', views.ReviewViewSet.as_view(), name='reviews'),
     re_path(r'^newRestaurant/$', views.restaurant_new, name='restaurant_new'),
     re_path(r'^$', views.restaurant_list, name='restaurant_list'),

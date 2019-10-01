@@ -4,7 +4,23 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.shortcuts import reverse
 
 
+class Region(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
 class Area(models.Model):
+    region = models.ForeignKey(Region, on_delete=models.CASCADE, null=True, blank=True)
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
+class City(models.Model):
+    region = models.ForeignKey(Region, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
 
     def __str__(self):
@@ -23,7 +39,9 @@ class RestaurantCategory(models.Model):
 class Restaurant(models.Model):
     admin = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     category = models.ForeignKey(RestaurantCategory, on_delete=models.CASCADE)
+    region = models.ForeignKey(Region, on_delete=models.CASCADE, null=True, blank=True)
     area = models.ForeignKey(Area, on_delete=models.CASCADE, null=True, blank=True)
+    detailArea = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
     account = models.CharField(max_length=50)

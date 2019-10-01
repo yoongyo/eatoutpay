@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Restaurant, RestaurantCategory, MenuCategory, Area, Menu, Review
+from .models import Restaurant, RestaurantCategory, MenuCategory, Area, Menu, Review, City, Region
 from django import forms
 from ckeditor.widgets import CKEditorWidget
 
@@ -10,6 +10,7 @@ class RestaurantCategoryAdmin(admin.ModelAdmin):
 
     class Meta:
         model = Restaurant
+
 
 class MenuCategoryAdmin(admin.ModelAdmin):
     list_display = ['name']
@@ -32,13 +33,23 @@ class MethodAdmin(admin.ModelAdmin):
 
 
 class AreaAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name', 'region']
 
 
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ['restaurant']
 
 
+class CityAdmin(admin.ModelAdmin):
+    list_display = ['name', 'region']
+
+
+class RegionAdmin(admin.ModelAdmin):
+    list_display = ['name', 'id', 'pk']
+
+
+admin.site.register(Region, RegionAdmin)
+admin.site.register(City, CityAdmin)
 admin.site.register(Menu, MenuAdmin)
 admin.site.register(Area, AreaAdmin)
 admin.site.register(RestaurantCategory, RestaurantCategoryAdmin)
