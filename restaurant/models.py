@@ -95,6 +95,7 @@ class Review(models.Model):
     image1 = models.ImageField(upload_to='review_image/', blank=True, null=True)
     image2 = models.ImageField(upload_to='review_image/', blank=True, null=True)
     image3 = models.ImageField(upload_to='review_image/', blank=True, null=True)
+    rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
