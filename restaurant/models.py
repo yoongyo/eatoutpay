@@ -52,6 +52,7 @@ class Restaurant(models.Model):
     longitude = models.CharField(max_length=50)
     map_image = models.ImageField(upload_to='map_image/', blank=True, null=True)
     map_content = models.CharField(max_length=50)
+    ratingAverage = models.PositiveIntegerField()
 
     def __str__(self):
         return self.name
@@ -100,8 +101,6 @@ class Review(models.Model):
 
     def __str__(self):
         return self.restaurant.name
-
-
 
 
 

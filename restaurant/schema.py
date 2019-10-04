@@ -188,7 +188,7 @@ class Followed(graphene.Mutation):
 #         _review = Review.objects.create(user=user, restaurant=restaurant, content=content,
 #                                         image1=image1, image2=image2, image3=image3)
 #
-#         return CreateReview(basket=_review)
+#         return CreateReview(review=_review)
 
 
 class Mutation(graphene.ObjectType):
