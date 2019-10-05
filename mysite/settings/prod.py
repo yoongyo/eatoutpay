@@ -11,9 +11,19 @@ DATABASES = {
     }
 }
 
+with open('secret.json', 'r') as f:
+    secret = json.loads(f.read())
 
-AWS_ACCESS_KEY_ID = 'AKIAVNC3EVGMGNL5BLSR'
-AWS_SECRET_ACCESS_KEY = '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'
+
+def get_secret(setting, secret=secret):
+    try:
+        return secret[setting]
+    except:
+        msg = "Set key '{0}' in secret.json".format(setting)
+
+
+AWS_ACCESS_KEY_ID = get_secret('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = get_secret('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'eatoutpay'
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME

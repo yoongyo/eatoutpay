@@ -1,10 +1,21 @@
 import os
-
+import json
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(ROOT_DIR)
 
 
-SECRET_KEY = '3z43!-4wg@4j_o9253zk%%kh58u8#@ppa9!k^kqbmas*n*iu^6'
+with open('secret.json', 'r') as f:
+    secret = json.loads(f.read())
+
+
+def get_secret(setting, secret=secret):
+    try:
+        return secret[setting]
+    except:
+        msg = "Set key '{0}' in secret.json".format(setting)
+
+
+SECRET_KEY = get_secret('SECRET_KEY')
 
 
 INSTALLED_APPS = [
