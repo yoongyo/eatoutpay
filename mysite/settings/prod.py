@@ -11,7 +11,7 @@ DATABASES = {
     }
 }
 
-with open('secret.json', 'r') as f:
+with open(os.path.join(BASE_DIR, 'secret.json'), 'r') as f:
     secret = json.loads(f.read())
 
 

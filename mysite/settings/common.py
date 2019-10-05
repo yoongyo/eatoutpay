@@ -4,7 +4,7 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(ROOT_DIR)
 
 
-with open('secret.json', 'r') as f:
+with open(os.path.join(BASE_DIR, 'secret.json'), 'r') as f:
     secret = json.loads(f.read())
 
 
