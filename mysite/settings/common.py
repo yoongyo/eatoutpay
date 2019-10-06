@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'announcement',
     'payment',
     'rest_framework',
+    'corsheaders'
 ]
 
 
@@ -62,6 +63,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    #
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 

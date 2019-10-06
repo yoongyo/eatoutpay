@@ -3,6 +3,8 @@ from .common import *
 DEBUG = False
 ALLOWED_HOSTS = ['*']
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 DATABASES = {
     'default': {
