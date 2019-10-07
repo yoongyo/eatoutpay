@@ -82,6 +82,7 @@ class Menu(models.Model):
     price = models.CharField(max_length=50)
     image = models.ImageField(null=True, blank=True)
     content = models.TextField(null=True, blank=True)
+    popular = models.BooleanField(default=False)
     soldOut = models.BooleanField(default=False, blank=True)
 
     def __str__(self):
