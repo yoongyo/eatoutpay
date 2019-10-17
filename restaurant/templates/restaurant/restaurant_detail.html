@@ -4,19 +4,24 @@
 {% load static %}
 
 <!-- PC버전 -->
+<style>
+    ::-webkit-scrollbar {
+        display:none;
+    }
+</style>
 <div class="container d-none d-sm-block">
     <div class="row mt-4">
         <div class="col-lg-3 col-sm-1 col-md-2 col-xs-0"></div>
         <div class="col-lg-6 col-sm-10 col-md-8 col-xs-12">
-            <div style="border:1px solid gray;border-radius:12px;box-shadow: 0px 0px 20px #000;background-color:white;height:760px">
+            <div style="border:1px solid gray;border-radius:12px;box-shadow: 0px 0px 20px #000;background-color:white;height:760px;width:100%;overflow-y: scroll;-ms-overflow-style: none;">
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col-8">
                         <h3 class="text-center mt-4">{{ restaurant.name }}</h3>
                     </div>
-                    <div class="col-2">
-                        <a href="{% url 'restaurant:restaurant_edit' restaurant.pk %}">
-                            <img width="40%" src="{% static 'image/edit.png' %}">
+                    <div class="col-2 mt-4">
+                        <a href="{% url 'restaurant:restaurant_edit' %}">
+                            <img width="30%" src="{% static 'image/edit.png' %}">
                         </a>
                     </div>
                 </div>
@@ -94,20 +99,45 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="menu">
-                        <div id="accordion" class="tab-pane fade show active">
+                        <div id="accordionPC" class="tab-pane fade show active">
+                            <div style="background-color:rgb(232,232,232);white-space:nowrap;overflow-x:auto; height:300px" class="px-2">
+                                <h5>인기메뉴</h5>
+                                    <div class="card" style="width: 18rem;display:inline-block; height:100px">
+                                      <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                      </div>
+                                    </div>
+                                    <div class="card" style="width: 18rem;display:inline-block; height:100px">
+                                      <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                      </div>
+                                    </div>
+                                    <div class="card" style="width: 18rem;display:inline-block; height:100px">
+                                      <img src="..." class="card-img-top" alt="...">
+                                      <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                      </div>
+                                    </div>
+                            </div>
                             {% for j in menu_category %}
                               <div class="card">
-                                  <a class="card-link" data-toggle="collapse" href="#collapse{{ j.name }}" style="width:100%">
-                                      <div class="card-header" style="background-color:rgb(200, 200, 200)">
+                                  <a class="card-link" data-toggle="collapse" href="#collapse{{ j.name }}PC" style="width:100%;text-decoration:none;color:black">
+                                      <div class="card-header" style="background-color:rgb(254, 239, 239); border-color:rgb(254,239,239)">
                                           {{ j.name }}
                                       </div>
                                   </a>
                                   {% for i in menus %}
                                   {% if j.name == i.category.name %}
-                                  <div id="collapse{{ j.name }}" class="collapse show">
+                                  <div id="collapse{{ j.name }}PC" class="collapse show">
                                       <div class="card-body p-0">
                                           <div id="{{ j.name }}" class="collapse show" aria-labelledby="h{{ j.name }}">
-                                              <a href="#" style="color:black;text-decoration:none">
+                                              <a href="{% url 'restaurant:menu_detail' i.pk %}" style="color:black;text-decoration:none">
                                                   <div class="py-2 px-3" style="border-bottom:1px solid rgb(220,220,220)">
                                                       <h6><strong>{{ i.name }}</strong></h6>
                                                       <span id="price{{i.pk}}"></span>
@@ -134,9 +164,11 @@
                     <div class="tab-pane fade" id="info">
                         <div class="container pb-4">
                             <h5 class="mt-3 mb-0">가게 소개</h5>
+                            <hr class="my-2">
                             <p class="p-0">{{ restaurant.introduction|safe }}</p>
 
                             <h5 class="mt-5">영업정보</h5>
+                            <hr class="my-2">
                             <table>
                                 <tr>
                                     <td style="width:5rem">운영시간</td>
@@ -153,6 +185,7 @@
                             </table>
 
                             <h5 class="mt-5">사업자 정보</h5>
+                            <hr class="my-2">
                             <table>
                                 <tr>
                                     <td style="width:5rem">대표자명</td>
@@ -313,14 +346,14 @@
                         <div id="accordion" class="tab-pane fade show active">
                             {% for j in menu_category %}
                               <div class="card">
-                                  <a class="card-link" data-toggle="collapse" href="#collapse{{ j.name }}" style="width:100%">
+                                  <a class="card-link" data-toggle="collapse" href="#collapse{{ j.name }}m" style="width:100%">
                                       <div class="card-header" style="background-color:rgb(200, 200, 200)">
                                           {{ j.name }}
                                       </div>
                                   </a>
                                   {% for i in menus %}
                                   {% if j.name == i.category.name %}
-                                  <div id="collapse{{ j.name }}" class="collapse show">
+                                  <div id="collapse{{ j.name }}m" class="collapse show">
                                       <div class="card-body p-0">
                                           <div id="{{ j.name }}" class="collapse show" aria-labelledby="h{{ j.name }}">
                                               <a href="#" style="color:black;text-decoration:none">

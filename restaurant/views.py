@@ -11,23 +11,16 @@ import sys
 sys.path.append('..')
 from admins.models import AdminComment
 
-@login_required
-def restaurant_list(request):
-    restaurants = Restaurant.objects.filter(admin=request.user)
-    return render(request, 'restaurant/restaurant_list.html', {
-        'restaurants': restaurants,
-    })
-
 
 @login_required
-def restaurant_detail(request, rpk):
-    restaurant = get_object_or_404(Restaurant, pk=rpk)
-    menus = Menu.objects.filter(restaurant__pk=rpk, admin=request.user)
-    menu_category = MenuCategory.objects.filter(restaurant__pk=rpk, admin=request.user)
+def restaurant_detail(request):
+    restaurant = get_object_or_404(Restaurant, admin=request.user)
+    menus = Menu.objects.filter(restaurant=restaurant, admin=request.user)
+    menu_category = MenuCategory.objects.filter(restaurant=restaurant, admin=request.user)
     menu_count = len(menus)
-    reviews = Review.objects.filter(restaurant__pk=rpk)
+    reviews = Review.objects.filter(restaurant=restaurant)
     reviews_count = len(reviews)
-    admin_comments = AdminComment.objects.filter(restaurant__pk=rpk, admin=request.user)
+    admin_comments = AdminComment.objects.filter(restaurant=restaurant, admin=request.user)
     admin_comments_count = len(admin_comments)
     reviews_sum = 0
     reviews_average = 0
@@ -36,7 +29,7 @@ def restaurant_detail(request, rpk):
         reviews_average = reviews_sum / reviews_count
         round(reviews_average, 1)
     count = reviews.count()
-    like_count = get_object_or_404(Restaurant, pk=rpk).likes.count()
+    like_count = restaurant.likes.count()
 
     return render(request, 'restaurant/restaurant_detail.html', {
         'restaurant': restaurant,
@@ -69,8 +62,8 @@ def restaurant_new(request):
 
 
 @login_required
-def restaurant_edit(request, rpk):
-    restaurant = get_object_or_404(Restaurant, pk=rpk)
+def restaurant_edit(request):
+    restaurant = get_object_or_404(Restaurant, admin=request.user)
     if request.method == 'POST':
         form = RestaurantForm(request.POST, request.FILES, instance=restaurant)
         if form.is_valid():
@@ -87,33 +80,36 @@ def restaurant_edit(request, rpk):
 
 
 @login_required
-def menu_list(request, rpk):
-    menus = Menu.objects.filter(restaurant__pk=rpk)
-    return render(request, 'restaurant/menu_list.html', {
-        'menus': menus
+def menu_detail(request, pk):
+    menu = get_object_or_404(Menu, pk=pk)
+    restaurant = get_object_or_404(Restaurant, admin=request.user)
+    return render(request, 'restaurant/menu_detail.html', {
+        'menu': menu,
+        'restaurant': restaurant
     })
 
 
 @login_required
-def menu_detail(request, rpk, mpk):
-    menu = get_object_or_404(Menu, pk=mpk)
+def menu_edit(request, pk):
+    restaurant = get_object_or_404(Restaurant, admin=request.user)
+    menu = get_object_or_404(Menu, pk=pk)
     if request.method == 'POST':
         form = MenuForm(request.POST, request.FILES, instance=menu)
         if form.is_valid():
             form.save()
             return
     else:
-        form = MenuForm(instance=menu)
+        form = MenuForm(request.user, restaurant, instance=menu)
 
-    return render(request, 'restaurant/menu_detail.html', {
+    return render(request, 'restaurant/menu_edit.html', {
         'menu': menu,
-        'form': form
+        'menu_form': form
     })
 
 
 @login_required
-def menu_new(request, rpk):
-    restaurant = get_object_or_404(Restaurant, pk=rpk)
+def menu_new(request):
+    restaurant = get_object_or_404(Restaurant, admin=request.user)
     if request.method == 'POST':
         menu_form = MenuForm(request.POST, request.FILES)
         if menu_form.is_valid():
@@ -130,8 +126,8 @@ def menu_new(request, rpk):
 
 
 @login_required
-def menu_category_new(request, rpk):
-    restaurant = get_object_or_404(Restaurant, pk=rpk)
+def menu_category_new(request):
+    restaurant = get_object_or_404(Restaurant, admin=request.user)
     if request.method == 'POST':
         form = MenuCategoryForm(request.POST, request.FILES)
         if form.is_valid():

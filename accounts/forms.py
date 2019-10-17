@@ -12,8 +12,7 @@ class LoginForm(AuthenticationForm):
             'required autofocus': True,
             'placeholder': 'ID',
             'autocomplete': 'off',
-            'style': 'outline:0;color:white;border-color: black;width:100%;'
-                     'background-color:black;box-shadow: 0 2px 0 0 white;'
+            'style': 'background-color: rgb(225,232,232)'
         }
     ))
     password = forms.CharField(
@@ -23,12 +22,11 @@ class LoginForm(AuthenticationForm):
             attrs={
                 'id': 'password',
                 'type': 'password',
-                'class': 'mt-2',
+                'class': 'mt-2 mb-2',
                 'placeholder': 'Password',
                 'required data-eye': True,
                 'autocomplete': 'off',
-                'style': 'outline:0;color:white;border-color: black;width:100%;'
-                         'background-color:black;box-shadow: 0 2px 0 0 white;'
+                'style': ''
             }
         ),
     )

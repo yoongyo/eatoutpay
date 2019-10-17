@@ -28,9 +28,15 @@ class RestaurantCategory(models.Model):
         return self.name
 
 
-class Restaurant(models.Model):
+class Franchise(models.Model):
     admin = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+    name = models.CharField(max_length=50)
+
+
+class Restaurant(models.Model):
+    admin = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     category = models.ForeignKey(RestaurantCategory, on_delete=models.CASCADE)
+    franchise = models.ForeignKey(Franchise, on_delete=models.CASCADE, null=True, blank=True)
     region = models.ForeignKey(Region, on_delete=models.CASCADE, null=True, blank=True)
     area = models.ForeignKey(Area, on_delete=models.CASCADE, null=True, blank=True)
     detailArea = models.CharField(max_length=50)
