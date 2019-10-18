@@ -40,7 +40,8 @@ def restaurant_detail(request):
         'admin_comments': admin_comments,
         'admin_comments_count': admin_comments_count,
         'menu_count': menu_count,
-        'like_count': like_count
+        'like_count': like_count,
+        'reviews': reviews
     })
 
 

@@ -3,7 +3,7 @@
 {% block content %}
 {% load static %}
 
-<!-- PC버전 -->
+ <!--PC버전 -->
 <style>
     ::-webkit-scrollbar {
         display:none;
@@ -13,7 +13,7 @@
     <div class="row mt-4">
         <div class="col-lg-3 col-sm-1 col-md-2 col-xs-0"></div>
         <div class="col-lg-6 col-sm-10 col-md-8 col-xs-12">
-            <div style="border:1px solid gray;border-radius:12px;box-shadow: 0px 0px 20px #000;background-color:white;height:760px;width:100%;overflow-y: scroll;-ms-overflow-style: none;">
+            <div style="border:1px solid gray;border-radius:12px;box-shadow: 0px 0px 20px #000;background-color:white;height:760px;width:100%;overflow-y: auto;overflow-x: hidden;-ms-overflow-style: none;">
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col-8">
@@ -85,7 +85,9 @@
                 <!-- 메뉴 정보 리뷰 공지사항 TAB -->
                 <ul class="nav nav-tabs">
                     <li class="nav-item text-center px-0" style="width:25%;color:black">
-                        <a style="color:black" class="nav-link active px-0" data-toggle="tab" href="#menu">메뉴 {{ menu_count }}</a>
+                        <a style="color:black" class="nav-link active px-0" data-toggle="tab" href="#menu">
+                            메뉴 {{ menu_count }}
+                        </a>
                     </li>
                     <li class="nav-item text-center px-0" style="width:25%;color:black">
                         <a style="color:black" class="nav-link px-0" data-toggle="tab" href="#info">정보</a>
@@ -102,28 +104,7 @@
                         <div id="accordionPC" class="tab-pane fade show active">
                             <div style="background-color:rgb(232,232,232);white-space:nowrap;overflow-x:auto; height:300px" class="px-2">
                                 <h5>인기메뉴</h5>
-                                    <div class="card" style="width: 18rem;display:inline-block; height:100px">
-                                      <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                      </div>
-                                    </div>
-                                    <div class="card" style="width: 18rem;display:inline-block; height:100px">
-                                      <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                      </div>
-                                    </div>
-                                    <div class="card" style="width: 18rem;display:inline-block; height:100px">
-                                      <img src="..." class="card-img-top" alt="...">
-                                      <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                      </div>
-                                    </div>
+
                             </div>
                             {% for j in menu_category %}
                               <div class="card">
@@ -159,7 +140,14 @@
                                 {% endfor %}
                               </div>
                             {% endfor %}
+                            <!-- 카테고리 추가 button -->
+                            <div style="position:fixed;top:30;right:30;">
+                                <a href="#">
+                                    <img width="50" src="{% static 'image/plus2.png' %}">
+                                </a>
+                            </div>
                         </div>
+
                     </div>
                     <div class="tab-pane fade" id="info">
                         <div class="container pb-4">
@@ -210,45 +198,51 @@
                     </div>
                     <div class="tab-pane fade" id="review">
                         <div class="container">
-                            <div class="p-3">
-                                <a href="#" type="button" style="width:100%;"><div class="text-center p-3" style="border-radius:15px;border:1px solid rgb(210,210,210)">리뷰 쓰기</div></a>
+                            <div class="row py-4" style="border-bottom: 1px solid #D7D7D7">
+                                <div class="col-3 text-center" >
+                                    <h3>{{ reviews_average }}</h3>
+                                </div>
+                                <div class="col-9 p-0">
+                                    <p class="m-0">전체리뷰 2건</p>
+                                    <span style="font-size:12px; color:gray">사진리뷰 2건</span>
+                                </div>
                             </div>
                             <!-- user 리뷰 -->
-                            {% for i in comments %}
-                            <div class="row pb-4">
-                                <div class="col-2 p-0">
-                                    <a href="{% url 'accounts:profile_review' i.user.username %}"><img width="100%" src="{% static 'image/mapbox-icon.png' %}"></a>
-                                </div>
-                                <div class="col-10 pl-0">
-                                    <b><a href="{% url 'accounts:profile_review' i.user.username %}">{{ i.user }}</a></b><br>
-                                    <span style="color:gold">
-                                        {% if i.rating == 1 %}★☆☆☆☆{% endif %}
-                                        {% if i.rating == 2 %}★★☆☆☆{% endif %}
-                                        {% if i.rating == 3 %}★★★☆☆{% endif %}
-                                        {% if i.rating == 4 %}★★★★☆{% endif %}
-                                        {% if i.rating == 5 %}★★★★★{% endif %}
-                                    </span>
-                                    <img src="{{ i.image.url }}" width="100%">
-                                    <p class="mb-2">{{ i.content }}</p>
-
-                                    <!-- admin 리뷰 -->
-                                    {% for j in admin_comments %}
-                                    {% if j.restaurant.pk == i.pk %}
-                                    <div class="jumbotron mb-0 py-2">
-                                        <b><p class="m-0">사장님 리뷰</p></b>
-                                        <span>
-                                            {{ j.content }}
-                                        </span>
+                            <div class="pt-4">
+                                {% for i in reviews %}
+                                <div class="row pb-4">
+                                    <div class="col-2 p-0">
+                                        <a href="#"><img width="100%" src="{% static 'image/pig.jpg' %}"></a>
                                     </div>
-                                    {% endif %}
-                                    {% endfor %}
-                                    <!-- /admin 리뷰-->
+                                    <div class="col-10 pl-0">
+                                        <b><a href="#" style="text-decoration:none; color:black">{{ i.user }}</a></b><br>
+                                        <span style="color:gold">
+                                            {% if i.rating == 1 %}★☆☆☆☆{% endif %}
+                                            {% if i.rating == 2 %}★★☆☆☆{% endif %}
+                                            {% if i.rating == 3 %}★★★☆☆{% endif %}
+                                            {% if i.rating == 4 %}★★★★☆{% endif %}
+                                            {% if i.rating == 5 %}★★★★★{% endif %}
+                                        </span>
+                                        <img src="{{ i.image.url }}" width="100%">
+                                        <p class="mb-2">{{ i.content }}</p>
+
+                                        <!-- admin 리뷰 -->
+                                        {% for j in admin_comments %}
+                                        {% if j.restaurant.pk == i.pk %}
+                                        <div class="jumbotron mb-0 py-2">
+                                            <b><p class="m-0">사장님 리뷰</p></b>
+                                            <span>
+                                                {{ j.content }}
+                                            </span>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                        <!-- /admin 리뷰-->
+                                    </div>
                                 </div>
-
+                                {% endfor %}
+                                <!-- /user 리뷰-->
                             </div>
-                            {% endfor %}
-                            <!-- /user 리뷰-->
-
                         </div>
                     </div>
                     <div class="tab-pane fade" id="notice">
@@ -259,7 +253,6 @@
         <div class="col-lg-3 col-sm-1 col-md-2 col-xs-0"></div>
     </div>
 </div>
-
 <!-- / PC버전-->
 
 <!-- 모바일 버전 -->
