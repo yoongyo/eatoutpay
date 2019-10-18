@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e657847c-1c27-4fbe-97f1-f3ec1a528d20" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/restaurant/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurant/admin.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +96,7 @@
           <entry key="js" value="1" />
           <entry key="json" value="1" />
           <entry key="png" value="2" />
-          <entry key="py" value="170" />
+          <entry key="py" value="171" />
           <entry key="svg" value="1" />
           <entry key="txt" value="7" />
         </counts>
@@ -107,7 +108,7 @@
           <entry key="JSON" value="1" />
           <entry key="JavaScript" value="1" />
           <entry key="PLAIN_TEXT" value="11" />
-          <entry key="Python" value="170" />
+          <entry key="Python" value="171" />
           <entry key="SVG" value="1" />
         </counts>
       </usages-collector>
@@ -116,7 +117,7 @@
           <entry key="gitignore" value="13" />
           <entry key="html" value="8705" />
           <entry key="json" value="28" />
-          <entry key="py" value="21247" />
+          <entry key="py" value="21272" />
           <entry key="txt" value="67" />
         </counts>
       </usages-collector>
@@ -125,7 +126,7 @@
           <entry key="HTML" value="8705" />
           <entry key="JSON" value="28" />
           <entry key="PLAIN_TEXT" value="80" />
-          <entry key="Python" value="21247" />
+          <entry key="Python" value="21272" />
         </counts>
       </usages-collector>
     </session>
@@ -136,22 +137,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/restaurant/templates/restaurant/menu_new.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1170">
-              <caret line="78" selection-start-line="3" selection-end-line="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/restaurant/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="148">
               <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
               <folding>
                 <marker date="1571358870584" expanded="true" signature="2827:3061" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/restaurant/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -219,8 +220,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="90">
+              <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
               <folding>
                 <element signature="e#22#31#0" expanded="true" />
               </folding>
@@ -228,7 +229,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/restaurant/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="309">
@@ -316,7 +317,6 @@
         <option value="$PROJECT_DIR$/payment/models.py" />
         <option value="$PROJECT_DIR$/mysite/urls.py" />
         <option value="$PROJECT_DIR$/restaurant/serializers.py" />
-        <option value="$PROJECT_DIR$/restaurant/admin.py" />
         <option value="$PROJECT_DIR$/restaurant/bcryptExample.py" />
         <option value="$PROJECT_DIR$/restaurant/schema.py" />
         <option value="$PROJECT_DIR$/restaurant/fyck.py" />
@@ -337,8 +337,9 @@
         <option value="$PROJECT_DIR$/restaurant/templates/restaurant/menu_edit.html" />
         <option value="$PROJECT_DIR$/restaurant/views.py" />
         <option value="$PROJECT_DIR$/restaurant/templates/restaurant/restaurant_detail.html" />
-        <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/restaurant/models.py" />
+        <option value="$PROJECT_DIR$/manage.py" />
+        <option value="$PROJECT_DIR$/restaurant/admin.py" />
       </list>
     </option>
   </component>
@@ -390,13 +391,6 @@
               <item name="ch2" type="462c0819:PsiDirectoryNode" />
               <item name="restaurant" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ch2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ch2" type="462c0819:PsiDirectoryNode" />
-              <item name="restaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="restaurant" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -713,13 +707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/restaurant/fyck.py" />
     <entry file="file://$PROJECT_DIR$/secret.json">
       <provider selected="true" editor-type-id="text-editor">
@@ -846,16 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/restaurant/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
-          <folding>
-            <marker date="1571358870584" expanded="true" signature="2827:3061" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/restaurant/templates/restaurant/menu_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -878,7 +855,6 @@
         <state relative-caret-position="480">
           <caret line="32" column="55" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h4#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -914,16 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#22#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/restaurant/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="309">
@@ -933,6 +899,33 @@
             <marker date="1571401286510" expanded="true" signature="293:295" ph="..." />
             <marker date="1571401286510" expanded="true" signature="501:503" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding>
+            <element signature="e#22#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+          <folding>
+            <marker date="1571358870584" expanded="true" signature="2827:3061" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/restaurant/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
         </state>
       </provider>
     </entry>
