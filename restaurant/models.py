@@ -34,7 +34,7 @@ class Franchise(models.Model):
 
 
 class Restaurant(models.Model):
-    admin = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+    admin = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     category = models.ForeignKey(RestaurantCategory, on_delete=models.CASCADE)
     franchise = models.ForeignKey(Franchise, on_delete=models.CASCADE, null=True, blank=True)
     region = models.ForeignKey(Region, on_delete=models.CASCADE, null=True, blank=True)

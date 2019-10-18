@@ -6,7 +6,7 @@ from ckeditor.widgets import CKEditorWidget
 
 class RestaurantCategoryAdmin(admin.ModelAdmin):
     # description = forms.CharField(widget=CKEditorWidget())
-    list_display = ['name', 'admin']
+    list_display = ['name']
 
     class Meta:
         model = Restaurant
@@ -21,7 +21,7 @@ class MenuAdmin(admin.ModelAdmin):
 
 
 class RestaurantAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name', 'admin']
 
 
 class CommentAdmin(admin.ModelAdmin):
